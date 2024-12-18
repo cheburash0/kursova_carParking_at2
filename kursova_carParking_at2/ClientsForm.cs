@@ -17,6 +17,7 @@ namespace kursova_carParking_at2
         public ClientsForm()
         {
             InitializeComponent();
+
         }
 
         private DataView clientsDataView;
