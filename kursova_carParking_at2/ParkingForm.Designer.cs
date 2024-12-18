@@ -45,6 +45,12 @@
             this.button_deleteParking = new System.Windows.Forms.Button();
             this.button_editParking = new System.Windows.Forms.Button();
             this.button_addParking = new System.Windows.Forms.Button();
+            this.comboBox_parkingSort = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_vehicleFilter = new System.Windows.Forms.TextBox();
+            this.textBox_parkingSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingDataGridView)).BeginInit();
@@ -101,11 +107,11 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.parkingDataGridView.DataSource = this.parkingBindingSource;
-            this.parkingDataGridView.Location = new System.Drawing.Point(12, 80);
+            this.parkingDataGridView.Location = new System.Drawing.Point(12, 155);
             this.parkingDataGridView.Name = "parkingDataGridView";
             this.parkingDataGridView.RowHeadersWidth = 51;
             this.parkingDataGridView.RowTemplate.Height = 24;
-            this.parkingDataGridView.Size = new System.Drawing.Size(776, 220);
+            this.parkingDataGridView.Size = new System.Drawing.Size(776, 202);
             this.parkingDataGridView.TabIndex = 11;
             // 
             // dataGridViewTextBoxColumn1
@@ -170,7 +176,7 @@
             this.button_deleteParking.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_deleteParking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_deleteParking.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_deleteParking.Location = new System.Drawing.Point(433, 330);
+            this.button_deleteParking.Location = new System.Drawing.Point(422, 363);
             this.button_deleteParking.Name = "button_deleteParking";
             this.button_deleteParking.Size = new System.Drawing.Size(158, 75);
             this.button_deleteParking.TabIndex = 16;
@@ -183,7 +189,7 @@
             this.button_editParking.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_editParking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_editParking.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_editParking.Location = new System.Drawing.Point(226, 330);
+            this.button_editParking.Location = new System.Drawing.Point(224, 363);
             this.button_editParking.Name = "button_editParking";
             this.button_editParking.Size = new System.Drawing.Size(158, 75);
             this.button_editParking.TabIndex = 15;
@@ -196,7 +202,7 @@
             this.button_addParking.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_addParking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_addParking.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_addParking.Location = new System.Drawing.Point(16, 330);
+            this.button_addParking.Location = new System.Drawing.Point(12, 363);
             this.button_addParking.Name = "button_addParking";
             this.button_addParking.Size = new System.Drawing.Size(158, 75);
             this.button_addParking.TabIndex = 14;
@@ -204,12 +210,83 @@
             this.button_addParking.UseVisualStyleBackColor = false;
             this.button_addParking.Click += new System.EventHandler(this.button_addParking_Click);
             // 
+            // comboBox_parkingSort
+            // 
+            this.comboBox_parkingSort.FormattingEnabled = true;
+            this.comboBox_parkingSort.Items.AddRange(new object[] {
+            "Без сортування",
+            "Дата початку (від мін до макс)",
+            "Дата початку (від макс до мін)",
+            "Дата кінця (від мін до макс)",
+            "Дата кінця (від макс до мін)"});
+            this.comboBox_parkingSort.Location = new System.Drawing.Point(292, 115);
+            this.comboBox_parkingSort.Name = "comboBox_parkingSort";
+            this.comboBox_parkingSort.Size = new System.Drawing.Size(198, 24);
+            this.comboBox_parkingSort.TabIndex = 23;
+            this.comboBox_parkingSort.SelectedIndexChanged += new System.EventHandler(this.comboBox_parkingSort_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(285, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 38);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Сортування";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(554, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(193, 76);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Фільтр \r\n(номер т/з)";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox_vehicleFilter
+            // 
+            this.textBox_vehicleFilter.Location = new System.Drawing.Point(561, 115);
+            this.textBox_vehicleFilter.Name = "textBox_vehicleFilter";
+            this.textBox_vehicleFilter.Size = new System.Drawing.Size(115, 22);
+            this.textBox_vehicleFilter.TabIndex = 25;
+            this.textBox_vehicleFilter.TextChanged += new System.EventHandler(this.textBox_vehicleFilter_TextChanged);
+            // 
+            // textBox_parkingSearch
+            // 
+            this.textBox_parkingSearch.Location = new System.Drawing.Point(43, 115);
+            this.textBox_parkingSearch.Multiline = true;
+            this.textBox_parkingSearch.Name = "textBox_parkingSearch";
+            this.textBox_parkingSearch.Size = new System.Drawing.Size(120, 24);
+            this.textBox_parkingSearch.TabIndex = 27;
+            this.textBox_parkingSearch.TextChanged += new System.EventHandler(this.textBox_parkingSearch_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(36, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 38);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Пошук";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ParkingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox_parkingSearch);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox_vehicleFilter);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox_parkingSort);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button_deleteParking);
             this.Controls.Add(this.button_editParking);
             this.Controls.Add(this.button_addParking);
@@ -244,5 +321,11 @@
         private System.Windows.Forms.Button button_deleteParking;
         private System.Windows.Forms.Button button_editParking;
         private System.Windows.Forms.Button button_addParking;
+        private System.Windows.Forms.ComboBox comboBox_parkingSort;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_vehicleFilter;
+        private System.Windows.Forms.TextBox textBox_parkingSearch;
+        private System.Windows.Forms.Label label1;
     }
 }

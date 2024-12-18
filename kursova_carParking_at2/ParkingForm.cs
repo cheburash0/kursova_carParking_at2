@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -144,6 +145,108 @@ namespace kursova_carParking_at2
             {
                 MessageBox.Show($"Сталася помилка під час видалення паркувального місця:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void comboBox_parkingSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sortOrder = comboBox_parkingSort.SelectedItem.ToString();
+
+            // Сортировка данных по выбранному критерию
+            IEnumerable<DataRow> sortedRows = null;
+
+            switch (sortOrder)
+            {
+                case "Дата початку (від мін до макс)": // Сортировка по дате начала, от меньшего к большему
+                    sortedRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                        .OrderBy(row => row.Field<DateTime>("start_date"));
+                    break;
+
+                case "Дата початку (від макс до мін)": // Сортировка по дате начала, от большего к меньшему
+                    sortedRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                        .OrderByDescending(row => row.Field<DateTime>("start_date"));
+                    break;
+
+                case "Дата кінця (від мін до макс)": // Сортировка по дате окончания, от меньшего к большему
+                    sortedRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                        .OrderBy(row => row.Field<DateTime>("end_date"));
+                    break;
+
+                case "Дата кінця (від макс до мін)": // Сортировка по дате окончания, от большего к меньшему
+                    sortedRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                        .OrderByDescending(row => row.Field<DateTime>("end_date"));
+                    break;
+
+                case "Без сортування": // Без сортировки
+                default:
+                    sortedRows = kursova_carParkingDataSet.Parking.AsEnumerable();
+                    break;
+            }
+
+            // Обновляем dataGridView_parking
+            if (sortedRows != null && sortedRows.Any())
+            {
+                parkingDataGridView.DataSource = sortedRows.CopyToDataTable();
+            }
+            else
+            {
+                // Если нет данных, показываем пустую таблицу
+                parkingDataGridView.DataSource = kursova_carParkingDataSet.Parking.Clone();
+            }
+
+            // Добавляем поддержку выбора строк
+            parkingDataGridView.SelectionChanged += (s, ev) =>
+            {
+                if (parkingDataGridView.CurrentRow != null)
+                {
+                    var rowView = (DataRowView)parkingDataGridView.CurrentRow.DataBoundItem;
+                    int parkingId = Convert.ToInt32(rowView["parking_id"]);
+
+                    // Дополнительная логика при выборе строки (если требуется)
+                }
+            };
+        }
+
+        private void checkBox_parkingLong_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_vehicleFilter_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = textBox_vehicleFilter.Text.Trim();
+
+            // Перевірка, чи введений текст є числом
+            if (int.TryParse(filterText, out int vehicleId))
+            {
+                // Фільтруємо дані за vehicle_id
+                var filteredRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                    .Where(row => row.Field<int>("vehicle_id") == vehicleId);
+
+                // Відображаємо результати у DataGridView
+                parkingDataGridView.DataSource = filteredRows.Any()
+                    ? filteredRows.CopyToDataTable()
+                    : kursova_carParkingDataSet.Parking.Clone();
+            }
+            else if (string.IsNullOrEmpty(filterText))
+            {
+                // Скидання фільтра
+                parkingDataGridView.DataSource = kursova_carParkingDataSet.Parking;
+            }
+        }
+
+        private void textBox_parkingSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox_parkingSearch.Text.Trim();
+
+            var filteredRows = kursova_carParkingDataSet.Parking.AsEnumerable()
+                .Where(row => row.Field<int?>("vehicle_id")?.ToString().Contains(searchText) == true ||
+                              row.Field<DateTime?>("start_date")?.ToString("dd/MM/yyyy").Contains(searchText) == true ||
+                              row.Field<DateTime?>("end_date")?.ToString("dd/MM/yyyy").Contains(searchText) == true);
+
+            // Оновлюємо DataGridView
+            parkingDataGridView.DataSource = filteredRows.Any()
+                ? filteredRows.CopyToDataTable()
+                : kursova_carParkingDataSet.Parking.Clone();
         }
     }
 }
