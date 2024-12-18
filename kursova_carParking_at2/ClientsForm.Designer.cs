@@ -33,17 +33,6 @@
             this.button_editClients = new System.Windows.Forms.Button();
             this.button_deleteClients = new System.Windows.Forms.Button();
             this.dataGridView_clients = new System.Windows.Forms.DataGridView();
-            this.clientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
-            this.clientsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ClientsTableAdapter();
-            this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
-            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_clientsSearch = new System.Windows.Forms.TextBox();
@@ -52,17 +41,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox_vehiclesCount = new System.Windows.Forms.CheckBox();
             this.vehiclesDataGridView = new System.Windows.Forms.DataGridView();
+            this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
+            this.clientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ClientsTableAdapter();
+            this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
+            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_clients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // button_addClients
@@ -123,83 +123,6 @@
             this.dataGridView_clients.TabIndex = 7;
             this.dataGridView_clients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_clients_CellContentClick);
             // 
-            // clientidDataGridViewTextBoxColumn
-            // 
-            this.clientidDataGridViewTextBoxColumn.DataPropertyName = "client_id";
-            this.clientidDataGridViewTextBoxColumn.HeaderText = "client_id";
-            this.clientidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientidDataGridViewTextBoxColumn.Name = "clientidDataGridViewTextBoxColumn";
-            this.clientidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientidDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // firstnameDataGridViewTextBoxColumn
-            // 
-            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name";
-            this.firstnameDataGridViewTextBoxColumn.HeaderText = "first_name";
-            this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
-            this.firstnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "last_name";
-            this.lastnameDataGridViewTextBoxColumn.HeaderText = "last_name";
-            this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            this.lastnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // phonenumberDataGridViewTextBoxColumn
-            // 
-            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
-            this.phonenumberDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // clientsBindingSource
-            // 
-            this.clientsBindingSource.DataMember = "Clients";
-            this.clientsBindingSource.DataSource = this.kursova_carParkingDataSet;
-            // 
-            // kursova_carParkingDataSet
-            // 
-            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
-            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientsTableAdapter
-            // 
-            this.clientsTableAdapter.ClearBeforeFill = true;
-            // 
-            // vehiclesBindingSource
-            // 
-            this.vehiclesBindingSource.DataMember = "FK__Vehicles__client__398D8EEE";
-            this.vehiclesBindingSource.DataSource = this.clientsBindingSource;
-            // 
-            // vehiclesTableAdapter
-            // 
-            this.vehiclesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClientsTableAdapter = this.clientsTableAdapter;
-            this.tableAdapterManager.EventLogTableAdapter = null;
-            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
-            this.tableAdapterManager.ParkingTableAdapter = null;
-            this.tableAdapterManager.PaymentsTableAdapter = null;
-            this.tableAdapterManager.SpacesTableAdapter = null;
-            this.tableAdapterManager.TariffsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.VehiclesTableAdapter = this.vehiclesTableAdapter;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -242,6 +165,7 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Сортування";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBox_clientsSort
             // 
@@ -299,6 +223,11 @@
             this.vehiclesDataGridView.Size = new System.Drawing.Size(864, 178);
             this.vehiclesDataGridView.TabIndex = 15;
             // 
+            // vehiclesBindingSource
+            // 
+            this.vehiclesBindingSource.DataMember = "FK__Vehicles__client__398D8EEE";
+            this.vehiclesBindingSource.DataSource = this.clientsBindingSource;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "vehicle_id";
@@ -348,6 +277,78 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 125;
             // 
+            // clientsBindingSource
+            // 
+            this.clientsBindingSource.DataMember = "Clients";
+            this.clientsBindingSource.DataSource = this.kursova_carParkingDataSet;
+            // 
+            // kursova_carParkingDataSet
+            // 
+            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
+            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientidDataGridViewTextBoxColumn
+            // 
+            this.clientidDataGridViewTextBoxColumn.DataPropertyName = "client_id";
+            this.clientidDataGridViewTextBoxColumn.HeaderText = "client_id";
+            this.clientidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientidDataGridViewTextBoxColumn.Name = "clientidDataGridViewTextBoxColumn";
+            this.clientidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientidDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "first_name";
+            this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "last_name";
+            this.lastnameDataGridViewTextBoxColumn.HeaderText = "last_name";
+            this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // phonenumberDataGridViewTextBoxColumn
+            // 
+            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
+            this.phonenumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // vehiclesTableAdapter
+            // 
+            this.vehiclesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientsTableAdapter = this.clientsTableAdapter;
+            this.tableAdapterManager.EventLogTableAdapter = null;
+            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
+            this.tableAdapterManager.ParkingTableAdapter = null;
+            this.tableAdapterManager.PaymentsTableAdapter = null;
+            this.tableAdapterManager.SpacesTableAdapter = null;
+            this.tableAdapterManager.TariffsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.VehiclesTableAdapter = this.vehiclesTableAdapter;
+            // 
             // ClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -370,10 +371,10 @@
             this.Text = "ClientsForm";
             this.Load += new System.EventHandler(this.ClientsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_clients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

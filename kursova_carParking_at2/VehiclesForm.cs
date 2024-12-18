@@ -143,5 +143,167 @@ namespace kursova_carParking_at2
                 MessageBox.Show($"Сталася помилка під час оновлення транспортного засобу:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textBox_vehiclesSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox_vehiclesSearch.Text.Trim();
+
+            // Фильтрация по полям model и licence_plate
+            var filteredRows = kursova_carParkingDataSet.Vehicles
+                .AsEnumerable()
+                .Where(row => row.Field<string>("model").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
+                           || row.Field<string>("licence_plate").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            // Обновляем dataGridView_vehicles
+            if (filteredRows.Any())
+            {
+                vehiclesDataGridView.DataSource = filteredRows.CopyToDataTable();
+            }
+            else
+            {
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone(); // Пустая таблица
+            }
+
+            // Обновляем dataGridView_aboutVehicles (если необходимо отобразить текущий результат)
+            if (vehiclesDataGridView.CurrentRow != null)
+            {
+                var rowView = (DataRowView)vehiclesDataGridView.CurrentRow.DataBoundItem;
+                int vehicleId = Convert.ToInt32(rowView["vehicle_id"]);
+
+                var aboutVehiclesFiltered = kursova_carParkingDataSet.Vehicles
+                    .AsEnumerable()
+                    .Where(row => row.Field<int>("vehicle_id") == vehicleId);
+
+            }
+        }
+
+        private void checkBox_vehiclesType1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_vehiclesType1.Checked)
+            {
+                // Фильтруем только те строки, у которых vehicle_type == "легковий"
+                var filteredRows = kursova_carParkingDataSet.Vehicles
+                    .AsEnumerable()
+                    .Where(row => row.Field<string>("vehicle_type").Equals("легковий", StringComparison.OrdinalIgnoreCase));
+
+                // Обновляем dataGridView_vehicles
+                if (filteredRows.Any())
+                {
+                    vehiclesDataGridView.DataSource = filteredRows.CopyToDataTable();
+                }
+                else
+                {
+                    // Если совпадений нет, отображаем пустую таблицу
+                    vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+            else
+            {
+                // Если чекбокс снят, показываем все транспортные средства
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles;
+            }
+        }
+
+        private void checkBox_vehiclesType3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_vehiclesType3.Checked)
+            {
+                // Фильтруем только те строки, у которых vehicle_type == "мотоцикл"
+                var filteredRows = kursova_carParkingDataSet.Vehicles
+                    .AsEnumerable()
+                    .Where(row => row.Field<string>("vehicle_type").Equals("мотоцикл", StringComparison.OrdinalIgnoreCase));
+
+                // Обновляем dataGridView_vehicles
+                if (filteredRows.Any())
+                {
+                    vehiclesDataGridView.DataSource = filteredRows.CopyToDataTable();
+                }
+                else
+                {
+                    // Если совпадений нет, отображаем пустую таблицу
+                    vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+            else
+            {
+                // Если чекбокс снят, показываем все транспортные средства
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles;
+            }
+        }
+
+        private void checkBox_vehiclesType2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_vehiclesType2.Checked)
+            {
+                // Фильтруем только те строки, у которых vehicle_type == "вантажний"
+                var filteredRows = kursova_carParkingDataSet.Vehicles
+                    .AsEnumerable()
+                    .Where(row => row.Field<string>("vehicle_type").Equals("вантажний", StringComparison.OrdinalIgnoreCase));
+
+                // Обновляем dataGridView_vehicles
+                if (filteredRows.Any())
+                {
+                    vehiclesDataGridView.DataSource = filteredRows.CopyToDataTable();
+                }
+                else
+                {
+                    // Если совпадений нет, отображаем пустую таблицу
+                    vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+            else
+            {
+                // Если чекбокс снят, показываем все транспортные средства
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles;
+            }
+        }
+
+        private void comboBox_clientsSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sortOrder = comboBox_vehiclesSort.SelectedItem.ToString();
+
+            // Сортировка данных по полю "model"
+            IEnumerable<DataRow> sortedRows = null;
+
+            switch (sortOrder)
+            {
+                case "Назва (А-Я)": // По алфавиту
+                    sortedRows = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                        .OrderBy(row => row.Field<string>("model"));
+                    break;
+
+                case "Назва (Я-А)": // В обратном порядке
+                    sortedRows = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                        .OrderByDescending(row => row.Field<string>("model"));
+                    break;
+
+                case "Без сортування": // Без сортировки
+                default:
+                    sortedRows = kursova_carParkingDataSet.Vehicles.AsEnumerable();
+                    break;
+            }
+
+            // Обновляем dataGridView_vehicles
+            if (sortedRows != null && sortedRows.Any())
+            {
+                vehiclesDataGridView.DataSource = sortedRows.CopyToDataTable();
+            }
+            else
+            {
+                // Если нет данных, показываем пустую таблицу
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+            }
+
+            // Добавляем обработку выбора строк для актуализации данных
+            vehiclesDataGridView.SelectionChanged += (s, ev) =>
+            {
+                if (vehiclesDataGridView.CurrentRow != null)
+                {
+                    var rowView = (DataRowView)vehiclesDataGridView.CurrentRow.DataBoundItem;
+                    int vehicleId = Convert.ToInt32(rowView["vehicle_id"]);
+
+                }
+            };
+        }
     }
 }

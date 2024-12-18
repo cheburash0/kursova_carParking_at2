@@ -322,5 +322,10 @@ namespace kursova_carParking_at2
         {
             
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

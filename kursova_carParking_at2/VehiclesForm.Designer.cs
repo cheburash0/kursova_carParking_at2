@@ -44,6 +44,14 @@
             this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
             this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_vehiclesSearch = new System.Windows.Forms.TextBox();
+            this.checkBox_vehiclesType1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox_vehiclesType2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_vehiclesType3 = new System.Windows.Forms.CheckBox();
+            this.comboBox_vehiclesSort = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
@@ -72,7 +80,7 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
             this.vehiclesDataGridView.DataSource = this.vehiclesBindingSource;
-            this.vehiclesDataGridView.Location = new System.Drawing.Point(12, 126);
+            this.vehiclesDataGridView.Location = new System.Drawing.Point(12, 175);
             this.vehiclesDataGridView.Name = "vehiclesDataGridView";
             this.vehiclesDataGridView.RowHeadersWidth = 51;
             this.vehiclesDataGridView.RowTemplate.Height = 24;
@@ -84,7 +92,7 @@
             this.button_addVehicles.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_addVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_addVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_addVehicles.Location = new System.Drawing.Point(12, 321);
+            this.button_addVehicles.Location = new System.Drawing.Point(12, 363);
             this.button_addVehicles.Name = "button_addVehicles";
             this.button_addVehicles.Size = new System.Drawing.Size(158, 75);
             this.button_addVehicles.TabIndex = 11;
@@ -97,7 +105,7 @@
             this.button_editVehicles.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_editVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_editVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_editVehicles.Location = new System.Drawing.Point(208, 321);
+            this.button_editVehicles.Location = new System.Drawing.Point(222, 363);
             this.button_editVehicles.Name = "button_editVehicles";
             this.button_editVehicles.Size = new System.Drawing.Size(158, 75);
             this.button_editVehicles.TabIndex = 12;
@@ -110,7 +118,7 @@
             this.button_deleteVehicles.BackColor = System.Drawing.Color.DarkKhaki;
             this.button_deleteVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_deleteVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_deleteVehicles.Location = new System.Drawing.Point(402, 321);
+            this.button_deleteVehicles.Location = new System.Drawing.Point(429, 363);
             this.button_deleteVehicles.Name = "button_deleteVehicles";
             this.button_deleteVehicles.Size = new System.Drawing.Size(158, 75);
             this.button_deleteVehicles.TabIndex = 13;
@@ -194,12 +202,108 @@
             this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VehiclesTableAdapter = this.vehiclesTableAdapter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 38);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Пошук";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox_vehiclesSearch
+            // 
+            this.textBox_vehiclesSearch.Location = new System.Drawing.Point(19, 105);
+            this.textBox_vehiclesSearch.Multiline = true;
+            this.textBox_vehiclesSearch.Name = "textBox_vehiclesSearch";
+            this.textBox_vehiclesSearch.Size = new System.Drawing.Size(120, 24);
+            this.textBox_vehiclesSearch.TabIndex = 15;
+            this.textBox_vehiclesSearch.TextChanged += new System.EventHandler(this.textBox_vehiclesSearch_TextChanged);
+            // 
+            // checkBox_vehiclesType1
+            // 
+            this.checkBox_vehiclesType1.AutoSize = true;
+            this.checkBox_vehiclesType1.Location = new System.Drawing.Point(500, 105);
+            this.checkBox_vehiclesType1.Name = "checkBox_vehiclesType1";
+            this.checkBox_vehiclesType1.Size = new System.Drawing.Size(90, 20);
+            this.checkBox_vehiclesType1.TabIndex = 17;
+            this.checkBox_vehiclesType1.Text = "легковий";
+            this.checkBox_vehiclesType1.UseVisualStyleBackColor = true;
+            this.checkBox_vehiclesType1.CheckedChanged += new System.EventHandler(this.checkBox_vehiclesType1_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(493, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 38);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Фільтр";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkBox_vehiclesType2
+            // 
+            this.checkBox_vehiclesType2.AutoSize = true;
+            this.checkBox_vehiclesType2.Location = new System.Drawing.Point(500, 131);
+            this.checkBox_vehiclesType2.Name = "checkBox_vehiclesType2";
+            this.checkBox_vehiclesType2.Size = new System.Drawing.Size(101, 20);
+            this.checkBox_vehiclesType2.TabIndex = 18;
+            this.checkBox_vehiclesType2.Text = "вантажний";
+            this.checkBox_vehiclesType2.UseVisualStyleBackColor = true;
+            this.checkBox_vehiclesType2.CheckedChanged += new System.EventHandler(this.checkBox_vehiclesType2_CheckedChanged);
+            // 
+            // checkBox_vehiclesType3
+            // 
+            this.checkBox_vehiclesType3.AutoSize = true;
+            this.checkBox_vehiclesType3.Location = new System.Drawing.Point(596, 105);
+            this.checkBox_vehiclesType3.Name = "checkBox_vehiclesType3";
+            this.checkBox_vehiclesType3.Size = new System.Drawing.Size(92, 20);
+            this.checkBox_vehiclesType3.TabIndex = 19;
+            this.checkBox_vehiclesType3.Text = "мотоцикл";
+            this.checkBox_vehiclesType3.UseVisualStyleBackColor = true;
+            this.checkBox_vehiclesType3.CheckedChanged += new System.EventHandler(this.checkBox_vehiclesType3_CheckedChanged);
+            // 
+            // comboBox_vehiclesSort
+            // 
+            this.comboBox_vehiclesSort.FormattingEnabled = true;
+            this.comboBox_vehiclesSort.Items.AddRange(new object[] {
+            "Без сортування",
+            "Назва (А-Я)",
+            "Назва (Я-А)"});
+            this.comboBox_vehiclesSort.Location = new System.Drawing.Point(222, 105);
+            this.comboBox_vehiclesSort.Name = "comboBox_vehiclesSort";
+            this.comboBox_vehiclesSort.Size = new System.Drawing.Size(198, 24);
+            this.comboBox_vehiclesSort.TabIndex = 21;
+            this.comboBox_vehiclesSort.SelectedIndexChanged += new System.EventHandler(this.comboBox_clientsSort_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(215, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 38);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Сортування";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // VehiclesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(829, 450);
+            this.Controls.Add(this.comboBox_vehiclesSort);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.checkBox_vehiclesType3);
+            this.Controls.Add(this.checkBox_vehiclesType2);
+            this.Controls.Add(this.checkBox_vehiclesType1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox_vehiclesSearch);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button_deleteVehicles);
             this.Controls.Add(this.button_editVehicles);
             this.Controls.Add(this.button_addVehicles);
@@ -233,5 +337,13 @@
         private System.Windows.Forms.Button button_addVehicles;
         private System.Windows.Forms.Button button_editVehicles;
         private System.Windows.Forms.Button button_deleteVehicles;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_vehiclesSearch;
+        private System.Windows.Forms.CheckBox checkBox_vehiclesType1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox_vehiclesType2;
+        private System.Windows.Forms.CheckBox checkBox_vehiclesType3;
+        private System.Windows.Forms.ComboBox comboBox_vehiclesSort;
+        private System.Windows.Forms.Label label3;
     }
 }

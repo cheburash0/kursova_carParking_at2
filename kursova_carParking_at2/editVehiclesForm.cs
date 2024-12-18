@@ -45,7 +45,37 @@ namespace kursova_carParking_at2
 
         private void editVehiclesForm_Load(object sender, EventArgs e)
         {
+            LoadAboutVehiclesData();
+        }
 
+        private void LoadAboutVehiclesData()
+        {
+            try
+            {
+                // Создаем новый DataTable для хранения результата SQL-запроса
+                var aboutVehiclesTable = new DataTable();
+
+                // Создаем SQL-запрос для объединения таблиц Clients и Vehicles
+                string query = @"
+                    SELECT Vehicles.client_id, Clients.first_name, 
+                           Vehicles.vehicle_id, Vehicles.model, Vehicles.licence_plate
+                    FROM Vehicles
+                    JOIN Clients ON Vehicles.client_id = Clients.client_id";
+
+                // Используем SqlDataAdapter для выполнения запроса
+                using (var connection = new System.Data.SqlClient.SqlConnection(vehiclesTableAdapter.Connection.ConnectionString))
+                using (var adapter = new System.Data.SqlClient.SqlDataAdapter(query, connection))
+                {
+                    adapter.Fill(aboutVehiclesTable);
+                }
+
+                // Привязываем результат запроса к dataGridView_aboutVehicles
+                dataGridView_aboutVehicles.DataSource = aboutVehiclesTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка під час завантаження даних:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_OK_Click(object sender, EventArgs e)
@@ -73,6 +103,11 @@ namespace kursova_carParking_at2
         private void button_cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dataGridView_aboutVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

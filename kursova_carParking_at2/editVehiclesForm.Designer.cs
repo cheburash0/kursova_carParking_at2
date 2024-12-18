@@ -194,6 +194,7 @@
             this.dataGridView_aboutVehicles.RowTemplate.Height = 24;
             this.dataGridView_aboutVehicles.Size = new System.Drawing.Size(601, 182);
             this.dataGridView_aboutVehicles.TabIndex = 14;
+            this.dataGridView_aboutVehicles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_aboutVehicles_CellContentClick);
             // 
             // bindingSource1
             // 
