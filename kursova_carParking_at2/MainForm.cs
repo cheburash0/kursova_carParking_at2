@@ -15,6 +15,7 @@ namespace kursova_carParking_at2
         public MainForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void buttonClients_Click(object sender, EventArgs e)

@@ -13,11 +13,11 @@ namespace kursova_carParking_at2
 {
     public partial class ClientsForm : Form
     {
-        
+      
         public ClientsForm()
         {
             InitializeComponent();
-
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private DataView clientsDataView;
@@ -27,11 +27,7 @@ namespace kursova_carParking_at2
             this.vehiclesTableAdapter.Fill(this.kursova_carParkingDataSet.Vehicles);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "kursova_carParkingDataSet.Clients". При необходимости она может быть перемещена или удалена.
             this.clientsTableAdapter.Fill(this.kursova_carParkingDataSet.Clients);
-            clientsDataView = new DataView(kursova_carParkingDataSet.Clients);
-                    
         }
-
-
         private void button_deleteClients_Click(object sender, EventArgs e)
         {
             clientsTableAdapter.DeleteQuery(
@@ -49,7 +45,6 @@ namespace kursova_carParking_at2
             clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
 
         }
-
         private void button_editClients_Click(object sender, EventArgs e)
         {
             edit = true;
@@ -71,50 +66,116 @@ namespace kursova_carParking_at2
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
+        }      
         private void textBox_clientsSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox_clientsSearch.Text;
+            string searchText = textBox_clientsSearch.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(searchText))
+            var filteredRows = kursova_carParkingDataSet.Clients
+                .AsEnumerable()
+                .Where(row => row.Field<string>("first_name").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
+                           || row.Field<string>("last_name").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            if (filteredRows.Any())
             {
-                clientsDataView.RowFilter = ""; // Скидання фільтру
+                dataGridView_clients.DataSource = filteredRows.CopyToDataTable();
             }
             else
             {
-                clientsDataView.RowFilter = $"[first_name] LIKE '%{searchText}%' OR [last_name] LIKE '%{searchText}%'";
+                dataGridView_clients.DataSource = kursova_carParkingDataSet.Clients.Clone(); // Пустая таблица
+            }
+
+            // Обновляем vehiclesDataGridView
+            if (dataGridView_clients.CurrentRow != null)
+            {
+                var rowView = (DataRowView)dataGridView_clients.CurrentRow.DataBoundItem;
+                int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                var vehiclesFiltered = kursova_carParkingDataSet.Vehicles
+                    .AsEnumerable()
+                    .Where(row => row.Field<int>("client_id") == clientId);
+
+                vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                    ? vehiclesFiltered.CopyToDataTable()
+                    : kursova_carParkingDataSet.Vehicles.Clone();
             }
         }       
 
         private void comboBox_clientsSort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox_clientsSort.SelectedItem.ToString())
-            {
-                case "Без сортування":
-                    clientsDataView.Sort = "";
-                    break;
+            string sortOrder = comboBox_clientsSort.SelectedItem.ToString();
+            // Сортируем данные клиентов
+            IEnumerable<DataRow> sortedRows = null;
 
+            switch (sortOrder)
+            {
                 case "Ім'я (А-Я)":
-                    clientsDataView.Sort = "first_name ASC";
+                    sortedRows = kursova_carParkingDataSet.Clients.AsEnumerable()
+                        .OrderBy(row => row.Field<string>("first_name"));
                     break;
 
                 case "Ім'я (Я-А)":
-                    clientsDataView.Sort = "first_name DESC";
+                    sortedRows = kursova_carParkingDataSet.Clients.AsEnumerable()
+                        .OrderByDescending(row => row.Field<string>("first_name"));
                     break;
 
                 case "Прізвище (А-Я)":
-                    clientsDataView.Sort = "last_name ASC";
+                    sortedRows = kursova_carParkingDataSet.Clients.AsEnumerable()
+                        .OrderBy(row => row.Field<string>("last_name"));
                     break;
 
                 case "Прізвище (Я-А)":
-                    clientsDataView.Sort = "last_name DESC";
+                    sortedRows = kursova_carParkingDataSet.Clients.AsEnumerable()
+                        .OrderByDescending(row => row.Field<string>("last_name"));
                     break;
 
                 default:
-                    clientsDataView.Sort = "";
+                    sortedRows = kursova_carParkingDataSet.Clients.AsEnumerable();
                     break;
             }
+            // Обновляем DataGridView клиентов
+            if (sortedRows != null && sortedRows.Any())
+            {
+                dataGridView_clients.DataSource = sortedRows.CopyToDataTable();
+                // Устанавливаем первую строку как текущую
+                if (dataGridView_clients.Rows.Count > 0)
+                {
+                    dataGridView_clients.CurrentCell = dataGridView_clients.Rows[0].Cells[0];
+                    // Обновляем vehiclesDataGridView для первой строки
+                    var rowView = (DataRowView)dataGridView_clients.Rows[0].DataBoundItem;
+                    int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                    var vehiclesFiltered = kursova_carParkingDataSet.Vehicles
+                        .AsEnumerable()
+                        .Where(row => row.Field<int>("client_id") == clientId);
+
+                    vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                        ? vehiclesFiltered.CopyToDataTable()
+                        : kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+            else
+            {
+                // Если строк нет, очищаем DataGridView транспортных средств
+                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+            }
+            // Добавляем поддержку кликов на разных клиентов после сортировки
+            dataGridView_clients.SelectionChanged += (s, ev) =>
+            {
+                if (dataGridView_clients.CurrentRow != null)
+                {
+                    var rowView = (DataRowView)dataGridView_clients.CurrentRow.DataBoundItem;
+                    int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                    var vehiclesFiltered = kursova_carParkingDataSet.Vehicles
+                        .AsEnumerable()
+                        .Where(row => row.Field<int>("client_id") == clientId);
+
+                    vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                        ? vehiclesFiltered.CopyToDataTable()
+                        : kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            };
         }
 
         private void checkBox_vehiclesCount_CheckedChanged(object sender, EventArgs e)
@@ -124,7 +185,7 @@ namespace kursova_carParking_at2
 
         private void dataGridView_clients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
     }
 }

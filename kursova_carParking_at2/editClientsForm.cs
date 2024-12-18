@@ -18,6 +18,7 @@ namespace kursova_carParking_at2
         public editClientsForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
             edit = false;
         }
