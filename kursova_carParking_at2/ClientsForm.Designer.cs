@@ -274,9 +274,9 @@
             this.checkBox_vehiclesCount.AutoSize = true;
             this.checkBox_vehiclesCount.Location = new System.Drawing.Point(482, 109);
             this.checkBox_vehiclesCount.Name = "checkBox_vehiclesCount";
-            this.checkBox_vehiclesCount.Size = new System.Drawing.Size(221, 20);
+            this.checkBox_vehiclesCount.Size = new System.Drawing.Size(162, 20);
             this.checkBox_vehiclesCount.TabIndex = 14;
-            this.checkBox_vehiclesCount.Text = "За кількістю т/з (2 або більше)";
+            this.checkBox_vehiclesCount.Text = "За кількістю т/з (>=2)\r\n";
             this.checkBox_vehiclesCount.UseVisualStyleBackColor = true;
             this.checkBox_vehiclesCount.CheckedChanged += new System.EventHandler(this.checkBox_vehiclesCount_CheckedChanged);
             // 

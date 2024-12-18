@@ -30,37 +30,91 @@ namespace kursova_carParking_at2
         }
         private void button_deleteClients_Click(object sender, EventArgs e)
         {
-            clientsTableAdapter.DeleteQuery(
-                Convert.ToInt32(dataGridView_clients.SelectedRows[0].Cells[0].Value));
-            clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
-            kursova_carParkingDataSet.AcceptChanges();
+            try
+            {
+                if (dataGridView_clients.SelectedRows.Count > 0)
+                {
+                    int clientId = Convert.ToInt32(dataGridView_clients.SelectedRows[0].Cells[0].Value);
+
+                    // Удаление клиента
+                    clientsTableAdapter.DeleteQuery(clientId);
+                    clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
+                    kursova_carParkingDataSet.AcceptChanges();
+
+                    MessageBox.Show("Клієнта успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Виберіть клієнта для видалення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка під час видалення клієнта:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private bool edit;
         private void button_addClients_Click(object sender, EventArgs e)
         {
-            edit = false;
-            var edt = new editClientsForm();
-            edt.ShowDialog();
-            clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
+            try
+            {
+                edit = false;
+                var edt = new editClientsForm();
+                edt.ShowDialog();
 
+                // Обновление данных
+                clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
+                MessageBox.Show("Клієнт успішно доданий!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка під час додавання клієнта:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void button_editClients_Click(object sender, EventArgs e)
         {
-            edit = true;
-            var st = new kursova_carParkingDataSet.ClientsDataTable();
-            clientsTableAdapter.FillBy(st,
-            Convert.ToInt32(dataGridView_clients.SelectedRows[0].Cells[0].Value));
-            object[] row = st.Rows[0].ItemArray;
-            var edt = new editClientsForm(
-                Convert.ToInt32(row[0]),
-                row[1].ToString(),
-                row[2].ToString(),
-                row[3].ToString(),
-                row[4].ToString());
-            edt.ShowDialog();
-            clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
-            kursova_carParkingDataSet.AcceptChanges();
+            try
+            {
+                if (dataGridView_clients.SelectedRows.Count > 0)
+                {
+                    edit = true;
+
+                    int clientId = Convert.ToInt32(dataGridView_clients.SelectedRows[0].Cells[0].Value);
+                    var st = new kursova_carParkingDataSet.ClientsDataTable();
+                    clientsTableAdapter.FillBy(st, clientId);
+
+                    if (st.Rows.Count > 0)
+                    {
+                        object[] row = st.Rows[0].ItemArray;
+                        var edt = new editClientsForm(
+                            Convert.ToInt32(row[0]),
+                            row[1].ToString(),
+                            row[2].ToString(),
+                            row[3].ToString(),
+                            row[4].ToString()
+                        );
+
+                        edt.ShowDialog();
+
+                        // Обновление данных
+                        clientsTableAdapter.Fill(kursova_carParkingDataSet.Clients);
+                        MessageBox.Show("Клієнта успішно відредаговано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Клієнта не знайдено для редагування!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Виберіть клієнта для редагування!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка під час редагування клієнта:\n{ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
