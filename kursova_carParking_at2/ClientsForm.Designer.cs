@@ -51,7 +51,6 @@
             this.comboBox_clientsSort = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox_vehiclesCount = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.vehiclesDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -275,21 +274,11 @@
             this.checkBox_vehiclesCount.AutoSize = true;
             this.checkBox_vehiclesCount.Location = new System.Drawing.Point(482, 109);
             this.checkBox_vehiclesCount.Name = "checkBox_vehiclesCount";
-            this.checkBox_vehiclesCount.Size = new System.Drawing.Size(130, 20);
+            this.checkBox_vehiclesCount.Size = new System.Drawing.Size(221, 20);
             this.checkBox_vehiclesCount.TabIndex = 14;
-            this.checkBox_vehiclesCount.Text = "За кількістю т/з";
+            this.checkBox_vehiclesCount.Text = "За кількістю т/з (2 або більше)";
             this.checkBox_vehiclesCount.UseVisualStyleBackColor = true;
             this.checkBox_vehiclesCount.CheckedChanged += new System.EventHandler(this.checkBox_vehiclesCount_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(482, 136);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(95, 20);
-            this.checkBox2.TabIndex = 15;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // vehiclesDataGridView
             // 
@@ -307,7 +296,7 @@
             this.vehiclesDataGridView.Name = "vehiclesDataGridView";
             this.vehiclesDataGridView.RowHeadersWidth = 51;
             this.vehiclesDataGridView.RowTemplate.Height = 24;
-            this.vehiclesDataGridView.Size = new System.Drawing.Size(864, 134);
+            this.vehiclesDataGridView.Size = new System.Drawing.Size(864, 178);
             this.vehiclesDataGridView.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
@@ -364,9 +353,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(896, 689);
+            this.ClientSize = new System.Drawing.Size(896, 581);
             this.Controls.Add(this.vehiclesDataGridView);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox_vehiclesCount);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox_clientsSort);
@@ -415,7 +403,6 @@
         private System.Windows.Forms.ComboBox comboBox_clientsSort;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox_vehiclesCount;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridView vehiclesDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;

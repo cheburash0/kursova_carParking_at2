@@ -180,7 +180,88 @@ namespace kursova_carParking_at2
 
         private void checkBox_vehiclesCount_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (checkBox_vehiclesCount.Checked)
+            {
+                // Фильтруем клиентов с 2 или более транспортными средствами
+                var filteredClients = kursova_carParkingDataSet.Clients.AsEnumerable()
+                    .Where(client =>
+                    {
+                        int clientId = client.Field<int>("client_id");
+
+                        // Считаем количество транспортных средств у клиента
+                        int vehicleCount = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                            .Count(vehicle => vehicle.Field<int>("client_id") == clientId);
+
+                        return vehicleCount >= 2; // Условие: 2 или больше транспортных средств
+                    });
+
+                if (filteredClients.Any())
+                {
+                    dataGridView_clients.DataSource = filteredClients.CopyToDataTable();
+                    // Устанавливаем первую строку как выбранную
+                    if (dataGridView_clients.Rows.Count > 0)
+                    {
+                        dataGridView_clients.CurrentCell = dataGridView_clients.Rows[0].Cells[0];
+
+                        // Обновляем vehiclesDataGridView для первого клиента
+                        var rowView = (DataRowView)dataGridView_clients.Rows[0].DataBoundItem;
+                        int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                        var vehiclesFiltered = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                            .Where(vehicle => vehicle.Field<int>("client_id") == clientId);
+
+                        vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                            ? vehiclesFiltered.CopyToDataTable()
+                            : kursova_carParkingDataSet.Vehicles.Clone();
+                    }
+                }
+                else
+                {
+                    // Если клиентов нет, очищаем обе таблицы
+                    dataGridView_clients.DataSource = kursova_carParkingDataSet.Clients.Clone();
+                    vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+            else
+            {
+                // Сбрасываем фильтрацию: показываем всех клиентов
+                dataGridView_clients.DataSource = kursova_carParkingDataSet.Clients;
+
+                // Обновляем vehiclesDataGridView для текущего клиента
+                if (dataGridView_clients.Rows.Count > 0 && dataGridView_clients.CurrentRow != null)
+                {
+                    var rowView = (DataRowView)dataGridView_clients.CurrentRow.DataBoundItem;
+                    int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                    var vehiclesFiltered = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                        .Where(vehicle => vehicle.Field<int>("client_id") == clientId);
+
+                    vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                        ? vehiclesFiltered.CopyToDataTable()
+                        : kursova_carParkingDataSet.Vehicles.Clone();
+                }
+                else
+                {
+                    vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            }
+
+            // Добавляем поддержку выбора клиентов после фильтрации
+            dataGridView_clients.SelectionChanged += (s, ev) =>
+            {
+                if (dataGridView_clients.CurrentRow != null)
+                {
+                    var rowView = (DataRowView)dataGridView_clients.CurrentRow.DataBoundItem;
+                    int clientId = Convert.ToInt32(rowView["client_id"]);
+
+                    var vehiclesFiltered = kursova_carParkingDataSet.Vehicles.AsEnumerable()
+                        .Where(vehicle => vehicle.Field<int>("client_id") == clientId);
+
+                    vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
+                        ? vehiclesFiltered.CopyToDataTable()
+                        : kursova_carParkingDataSet.Vehicles.Clone();
+                }
+            };
         }
 
         private void dataGridView_clients_CellContentClick(object sender, DataGridViewCellEventArgs e)
