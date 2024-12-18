@@ -36,6 +36,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonVehicles = new System.Windows.Forms.Button();
+            this.buttonParking = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -58,7 +59,7 @@
             this.buttonClients.BackColor = System.Drawing.Color.DarkKhaki;
             this.buttonClients.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClients.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClients.Location = new System.Drawing.Point(181, 203);
+            this.buttonClients.Location = new System.Drawing.Point(12, 203);
             this.buttonClients.Name = "buttonClients";
             this.buttonClients.Size = new System.Drawing.Size(158, 75);
             this.buttonClients.TabIndex = 3;
@@ -101,7 +102,7 @@
             this.buttonVehicles.BackColor = System.Drawing.Color.DarkKhaki;
             this.buttonVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonVehicles.Location = new System.Drawing.Point(403, 203);
+            this.buttonVehicles.Location = new System.Drawing.Point(215, 203);
             this.buttonVehicles.Name = "buttonVehicles";
             this.buttonVehicles.Size = new System.Drawing.Size(158, 75);
             this.buttonVehicles.TabIndex = 4;
@@ -109,12 +110,26 @@
             this.buttonVehicles.UseVisualStyleBackColor = false;
             this.buttonVehicles.Click += new System.EventHandler(this.buttonVehicles_Click);
             // 
+            // buttonParking
+            // 
+            this.buttonParking.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonParking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonParking.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonParking.Location = new System.Drawing.Point(419, 203);
+            this.buttonParking.Name = "buttonParking";
+            this.buttonParking.Size = new System.Drawing.Size(158, 75);
+            this.buttonParking.TabIndex = 5;
+            this.buttonParking.Text = "Паркування";
+            this.buttonParking.UseVisualStyleBackColor = false;
+            this.buttonParking.Click += new System.EventHandler(this.buttonParking_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonParking);
             this.Controls.Add(this.buttonVehicles);
             this.Controls.Add(this.buttonClients);
             this.Controls.Add(this.pictureBox2);
@@ -140,6 +155,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private kursova_carParkingDataSet kursova_carParkingDataSet;
         private System.Windows.Forms.Button buttonVehicles;
+        private System.Windows.Forms.Button buttonParking;
     }
 }
 

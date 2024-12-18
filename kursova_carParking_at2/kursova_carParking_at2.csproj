@@ -58,11 +58,20 @@
     <Compile Include="editClientsForm.Designer.cs">
       <DependentUpon>editClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="editParkingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editParkingForm.Designer.cs">
+      <DependentUpon>editParkingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="editVehiclesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="editVehiclesForm.Designer.cs">
       <DependentUpon>editVehiclesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kursova_carParkingDataSet.cs">
+      <DependentUpon>kursova_carParkingDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="kursova_carParkingDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -74,6 +83,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParkingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParkingForm.Designer.cs">
+      <DependentUpon>ParkingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,11 +104,17 @@
     <EmbeddedResource Include="editClientsForm.resx">
       <DependentUpon>editClientsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editParkingForm.resx">
+      <DependentUpon>editParkingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editVehiclesForm.resx">
       <DependentUpon>editVehiclesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParkingForm.resx">
+      <DependentUpon>ParkingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
