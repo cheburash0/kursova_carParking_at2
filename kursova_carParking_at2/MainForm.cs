@@ -53,5 +53,11 @@ namespace kursova_carParking_at2
             PaymentsForm paymentsForm = new PaymentsForm();
             paymentsForm.Show();
         }
+
+        private void buttonEventLog_Click(object sender, EventArgs e)
+        {
+            EventLogForm eventLogForm = new EventLogForm();
+            eventLogForm.Show();
+        }
     }
 }

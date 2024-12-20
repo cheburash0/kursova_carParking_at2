@@ -58,6 +58,12 @@
     <Compile Include="editClientsForm.Designer.cs">
       <DependentUpon>editClientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="editEventLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editEventLogForm.Designer.cs">
+      <DependentUpon>editEventLogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="editParkingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editClientsForm.resx">
       <DependentUpon>editClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editEventLogForm.resx">
+      <DependentUpon>editEventLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editParkingForm.resx">
       <DependentUpon>editParkingForm.cs</DependentUpon>

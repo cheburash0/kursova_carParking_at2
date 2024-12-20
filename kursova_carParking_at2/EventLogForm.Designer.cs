@@ -40,9 +40,9 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.button_deleteTariff = new System.Windows.Forms.Button();
-            this.button_editTariff = new System.Windows.Forms.Button();
-            this.button_addTariff = new System.Windows.Forms.Button();
+            this.button_deleteLog = new System.Windows.Forms.Button();
+            this.button_editLog = new System.Windows.Forms.Button();
+            this.button_addLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogDataGridView)).BeginInit();
@@ -145,41 +145,44 @@
             this.label2.Text = "Журнал подій";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button_deleteTariff
+            // button_deleteLog
             // 
-            this.button_deleteTariff.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_deleteTariff.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_deleteTariff.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_deleteTariff.Location = new System.Drawing.Point(630, 294);
-            this.button_deleteTariff.Name = "button_deleteTariff";
-            this.button_deleteTariff.Size = new System.Drawing.Size(158, 75);
-            this.button_deleteTariff.TabIndex = 22;
-            this.button_deleteTariff.Text = "Видалити";
-            this.button_deleteTariff.UseVisualStyleBackColor = false;
+            this.button_deleteLog.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_deleteLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_deleteLog.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_deleteLog.Location = new System.Drawing.Point(630, 294);
+            this.button_deleteLog.Name = "button_deleteLog";
+            this.button_deleteLog.Size = new System.Drawing.Size(158, 75);
+            this.button_deleteLog.TabIndex = 22;
+            this.button_deleteLog.Text = "Видалити";
+            this.button_deleteLog.UseVisualStyleBackColor = false;
+            this.button_deleteLog.Click += new System.EventHandler(this.button_deleteLog_Click);
             // 
-            // button_editTariff
+            // button_editLog
             // 
-            this.button_editTariff.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_editTariff.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_editTariff.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_editTariff.Location = new System.Drawing.Point(321, 294);
-            this.button_editTariff.Name = "button_editTariff";
-            this.button_editTariff.Size = new System.Drawing.Size(158, 75);
-            this.button_editTariff.TabIndex = 21;
-            this.button_editTariff.Text = "Редагувати";
-            this.button_editTariff.UseVisualStyleBackColor = false;
+            this.button_editLog.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_editLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_editLog.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_editLog.Location = new System.Drawing.Point(321, 294);
+            this.button_editLog.Name = "button_editLog";
+            this.button_editLog.Size = new System.Drawing.Size(158, 75);
+            this.button_editLog.TabIndex = 21;
+            this.button_editLog.Text = "Редагувати";
+            this.button_editLog.UseVisualStyleBackColor = false;
+            this.button_editLog.Click += new System.EventHandler(this.button_editLog_Click);
             // 
-            // button_addTariff
+            // button_addLog
             // 
-            this.button_addTariff.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_addTariff.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_addTariff.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_addTariff.Location = new System.Drawing.Point(12, 294);
-            this.button_addTariff.Name = "button_addTariff";
-            this.button_addTariff.Size = new System.Drawing.Size(158, 75);
-            this.button_addTariff.TabIndex = 20;
-            this.button_addTariff.Text = "Додати";
-            this.button_addTariff.UseVisualStyleBackColor = false;
+            this.button_addLog.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_addLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_addLog.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_addLog.Location = new System.Drawing.Point(12, 294);
+            this.button_addLog.Name = "button_addLog";
+            this.button_addLog.Size = new System.Drawing.Size(158, 75);
+            this.button_addLog.TabIndex = 20;
+            this.button_addLog.Text = "Додати";
+            this.button_addLog.UseVisualStyleBackColor = false;
+            this.button_addLog.Click += new System.EventHandler(this.button_addTariff_Click);
             // 
             // EventLogForm
             // 
@@ -187,9 +190,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 384);
-            this.Controls.Add(this.button_deleteTariff);
-            this.Controls.Add(this.button_editTariff);
-            this.Controls.Add(this.button_addTariff);
+            this.Controls.Add(this.button_deleteLog);
+            this.Controls.Add(this.button_editLog);
+            this.Controls.Add(this.button_addLog);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.eventLogDataGridView);
             this.Name = "EventLogForm";
@@ -216,8 +219,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button_deleteTariff;
-        private System.Windows.Forms.Button button_editTariff;
-        private System.Windows.Forms.Button button_addTariff;
+        private System.Windows.Forms.Button button_deleteLog;
+        private System.Windows.Forms.Button button_editLog;
+        private System.Windows.Forms.Button button_addLog;
     }
 }
