@@ -248,5 +248,10 @@ namespace kursova_carParking_at2
                 ? filteredRows.CopyToDataTable()
                 : kursova_carParkingDataSet.Parking.Clone();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

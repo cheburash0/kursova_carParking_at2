@@ -35,5 +35,11 @@ namespace kursova_carParking_at2
             ParkingForm parkingForm = new ParkingForm();
             parkingForm.Show();
         }
+
+        private void buttonSpaces_Click(object sender, EventArgs e)
+        {
+            SpacesForm spacesForm = new SpacesForm();
+            spacesForm.Show();
+        }
     }
 }

@@ -33,10 +33,11 @@
             this.buttonClients = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonVehicles = new System.Windows.Forms.Button();
             this.buttonParking = new System.Windows.Forms.Button();
+            this.buttonSpaces = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,26 +78,6 @@
             this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
             this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::kursova_carParking_at2.Properties.Resources.bumblebee_nature_png_design_5690321;
-            this.pictureBox2.Location = new System.Drawing.Point(701, -5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(116, 137);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::kursova_carParking_at2.Properties.Resources.free_parking_sign_icon_2526_thumb;
-            this.pictureBox1.Location = new System.Drawing.Point(-6, -5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 137);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // buttonVehicles
             // 
             this.buttonVehicles.BackColor = System.Drawing.Color.DarkKhaki;
@@ -123,12 +104,46 @@
             this.buttonParking.UseVisualStyleBackColor = false;
             this.buttonParking.Click += new System.EventHandler(this.buttonParking_Click);
             // 
+            // buttonSpaces
+            // 
+            this.buttonSpaces.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonSpaces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSpaces.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSpaces.Location = new System.Drawing.Point(615, 203);
+            this.buttonSpaces.Name = "buttonSpaces";
+            this.buttonSpaces.Size = new System.Drawing.Size(158, 75);
+            this.buttonSpaces.TabIndex = 6;
+            this.buttonSpaces.Text = "Паркувальні місця";
+            this.buttonSpaces.UseVisualStyleBackColor = false;
+            this.buttonSpaces.Click += new System.EventHandler(this.buttonSpaces_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::kursova_carParking_at2.Properties.Resources.bumblebee_nature_png_design_5690321;
+            this.pictureBox2.Location = new System.Drawing.Point(701, -5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(116, 137);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::kursova_carParking_at2.Properties.Resources.free_parking_sign_icon_2526_thumb;
+            this.pictureBox1.Location = new System.Drawing.Point(-6, -5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 137);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSpaces);
             this.Controls.Add(this.buttonParking);
             this.Controls.Add(this.buttonVehicles);
             this.Controls.Add(this.buttonClients);
@@ -156,6 +171,7 @@
         private kursova_carParkingDataSet kursova_carParkingDataSet;
         private System.Windows.Forms.Button buttonVehicles;
         private System.Windows.Forms.Button buttonParking;
+        private System.Windows.Forms.Button buttonSpaces;
     }
 }
 
