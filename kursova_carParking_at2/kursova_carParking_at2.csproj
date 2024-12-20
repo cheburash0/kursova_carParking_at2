@@ -64,6 +64,12 @@
     <Compile Include="editParkingForm.Designer.cs">
       <DependentUpon>editParkingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="editPaymentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editPaymentsForm.Designer.cs">
+      <DependentUpon>editPaymentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="editSpacesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="editVehiclesForm.Designer.cs">
       <DependentUpon>editVehiclesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventLogForm.Designer.cs">
+      <DependentUpon>EventLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="kursova_carParkingDataSet.cs">
       <DependentUpon>kursova_carParkingDataSet.xsd</DependentUpon>
@@ -101,6 +113,12 @@
     </Compile>
     <Compile Include="ParkingForm.Designer.cs">
       <DependentUpon>ParkingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentsForm.Designer.cs">
+      <DependentUpon>PaymentsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +149,9 @@
     <EmbeddedResource Include="editParkingForm.resx">
       <DependentUpon>editParkingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editPaymentsForm.resx">
+      <DependentUpon>editPaymentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editSpacesForm.resx">
       <DependentUpon>editSpacesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,11 +161,17 @@
     <EmbeddedResource Include="editVehiclesForm.resx">
       <DependentUpon>editVehiclesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventLogForm.resx">
+      <DependentUpon>EventLogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParkingForm.resx">
       <DependentUpon>ParkingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentsForm.resx">
+      <DependentUpon>PaymentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

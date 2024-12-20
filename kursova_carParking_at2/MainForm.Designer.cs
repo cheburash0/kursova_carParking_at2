@@ -36,9 +36,10 @@
             this.buttonVehicles = new System.Windows.Forms.Button();
             this.buttonParking = new System.Windows.Forms.Button();
             this.buttonSpaces = new System.Windows.Forms.Button();
+            this.buttonTariffs = new System.Windows.Forms.Button();
+            this.buttonPayments = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonTariffs = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -118,6 +119,32 @@
             this.buttonSpaces.UseVisualStyleBackColor = false;
             this.buttonSpaces.Click += new System.EventHandler(this.buttonSpaces_Click);
             // 
+            // buttonTariffs
+            // 
+            this.buttonTariffs.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonTariffs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTariffs.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonTariffs.Location = new System.Drawing.Point(12, 311);
+            this.buttonTariffs.Name = "buttonTariffs";
+            this.buttonTariffs.Size = new System.Drawing.Size(158, 75);
+            this.buttonTariffs.TabIndex = 7;
+            this.buttonTariffs.Text = "Тарифи";
+            this.buttonTariffs.UseVisualStyleBackColor = false;
+            this.buttonTariffs.Click += new System.EventHandler(this.buttonTariffs_Click);
+            // 
+            // buttonPayments
+            // 
+            this.buttonPayments.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonPayments.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPayments.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonPayments.Location = new System.Drawing.Point(215, 311);
+            this.buttonPayments.Name = "buttonPayments";
+            this.buttonPayments.Size = new System.Drawing.Size(158, 75);
+            this.buttonPayments.TabIndex = 8;
+            this.buttonPayments.Text = "Платежі\r\n(Оплата)";
+            this.buttonPayments.UseVisualStyleBackColor = false;
+            this.buttonPayments.Click += new System.EventHandler(this.buttonPayments_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::kursova_carParking_at2.Properties.Resources.bumblebee_nature_png_design_5690321;
@@ -138,25 +165,13 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // buttonTariffs
-            // 
-            this.buttonTariffs.BackColor = System.Drawing.Color.DarkKhaki;
-            this.buttonTariffs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonTariffs.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonTariffs.Location = new System.Drawing.Point(12, 311);
-            this.buttonTariffs.Name = "buttonTariffs";
-            this.buttonTariffs.Size = new System.Drawing.Size(158, 75);
-            this.buttonTariffs.TabIndex = 7;
-            this.buttonTariffs.Text = "Тарифи";
-            this.buttonTariffs.UseVisualStyleBackColor = false;
-            this.buttonTariffs.Click += new System.EventHandler(this.buttonTariffs_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonPayments);
             this.Controls.Add(this.buttonTariffs);
             this.Controls.Add(this.buttonSpaces);
             this.Controls.Add(this.buttonParking);
@@ -188,6 +203,7 @@
         private System.Windows.Forms.Button buttonParking;
         private System.Windows.Forms.Button buttonSpaces;
         private System.Windows.Forms.Button buttonTariffs;
+        private System.Windows.Forms.Button buttonPayments;
     }
 }
 

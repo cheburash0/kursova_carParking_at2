@@ -30,16 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
-            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
-            this.spacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.spacesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.SpacesTableAdapter();
-            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             this.spacesDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_deleteSpaces = new System.Windows.Forms.Button();
             this.button_editSpaces = new System.Windows.Forms.Button();
             this.button_addSpaces = new System.Windows.Forms.Button();
@@ -49,9 +40,18 @@
             this.comboBox_spacesFilter = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_spacesSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spacesBindingSource)).BeginInit();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
+            this.spacesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.SpacesTableAdapter();
+            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.spacesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spacesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -64,33 +64,6 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Паркувальні місця";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // kursova_carParkingDataSet
-            // 
-            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
-            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // spacesBindingSource
-            // 
-            this.spacesBindingSource.DataMember = "Spaces";
-            this.spacesBindingSource.DataSource = this.kursova_carParkingDataSet;
-            // 
-            // spacesTableAdapter
-            // 
-            this.spacesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClientsTableAdapter = null;
-            this.tableAdapterManager.EventLogTableAdapter = null;
-            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
-            this.tableAdapterManager.ParkingTableAdapter = null;
-            this.tableAdapterManager.PaymentsTableAdapter = null;
-            this.tableAdapterManager.SpacesTableAdapter = this.spacesTableAdapter;
-            this.tableAdapterManager.TariffsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.VehiclesTableAdapter = null;
             // 
             // spacesDataGridView
             // 
@@ -109,47 +82,6 @@
             this.spacesDataGridView.RowTemplate.Height = 24;
             this.spacesDataGridView.Size = new System.Drawing.Size(776, 149);
             this.spacesDataGridView.TabIndex = 11;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "space_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "space_id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "space_status";
-            this.dataGridViewTextBoxColumn2.HeaderText = "space_status";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "price_per_hour";
-            this.dataGridViewTextBoxColumn3.HeaderText = "price_per_hour";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "location";
-            this.dataGridViewTextBoxColumn4.HeaderText = "location";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "tariff_id";
-            this.dataGridViewTextBoxColumn5.HeaderText = "tariff_id";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // button_deleteSpaces
             // 
@@ -224,6 +156,7 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Фільтр";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // comboBox_spacesFilter
             // 
@@ -259,6 +192,74 @@
             this.textBox_spacesSearch.TabIndex = 29;
             this.textBox_spacesSearch.TextChanged += new System.EventHandler(this.textBox_spacesSearch_TextChanged);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "space_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "space_id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "space_status";
+            this.dataGridViewTextBoxColumn2.HeaderText = "space_status";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "price_per_hour";
+            this.dataGridViewTextBoxColumn3.HeaderText = "price_per_hour";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "location";
+            this.dataGridViewTextBoxColumn4.HeaderText = "location";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "tariff_id";
+            this.dataGridViewTextBoxColumn5.HeaderText = "tariff_id";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // spacesBindingSource
+            // 
+            this.spacesBindingSource.DataMember = "Spaces";
+            this.spacesBindingSource.DataSource = this.kursova_carParkingDataSet;
+            // 
+            // kursova_carParkingDataSet
+            // 
+            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
+            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // spacesTableAdapter
+            // 
+            this.spacesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientsTableAdapter = null;
+            this.tableAdapterManager.EventLogTableAdapter = null;
+            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
+            this.tableAdapterManager.ParkingTableAdapter = null;
+            this.tableAdapterManager.PaymentsTableAdapter = null;
+            this.tableAdapterManager.SpacesTableAdapter = this.spacesTableAdapter;
+            this.tableAdapterManager.TariffsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.VehiclesTableAdapter = null;
+            // 
             // SpacesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -279,9 +280,9 @@
             this.Name = "SpacesForm";
             this.Text = "SpacesForm";
             this.Load += new System.EventHandler(this.SpacesForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spacesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spacesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spacesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
