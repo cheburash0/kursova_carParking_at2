@@ -70,6 +70,12 @@
     <Compile Include="editSpacesForm.Designer.cs">
       <DependentUpon>editSpacesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="editTariffsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editTariffsForm.Designer.cs">
+      <DependentUpon>editTariffsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="editVehiclesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     <Compile Include="SpacesForm.Designer.cs">
       <DependentUpon>SpacesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TariffsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TariffsForm.Designer.cs">
+      <DependentUpon>TariffsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VehiclesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editSpacesForm.resx">
       <DependentUpon>editSpacesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editTariffsForm.resx">
+      <DependentUpon>editTariffsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editVehiclesForm.resx">
       <DependentUpon>editVehiclesForm.cs</DependentUpon>
@@ -143,6 +158,9 @@
     </Compile>
     <EmbeddedResource Include="SpacesForm.resx">
       <DependentUpon>SpacesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TariffsForm.resx">
+      <DependentUpon>TariffsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VehiclesForm.resx">
       <DependentUpon>VehiclesForm.cs</DependentUpon>

@@ -41,5 +41,11 @@ namespace kursova_carParking_at2
             SpacesForm spacesForm = new SpacesForm();
             spacesForm.Show();
         }
+
+        private void buttonTariffs_Click(object sender, EventArgs e)
+        {
+            TariffsForm tariffsForm = new TariffsForm();
+            tariffsForm.Show();
+        }
     }
 }
