@@ -98,22 +98,39 @@ namespace kursova_carParking_at2
 
             if (edit)
             {
-                parkingTableAdapter.UpdateQuery(Convert.ToInt32(textBox_spaceID.Text),
+                string startDateTime = $"{textBox_startDate.Text} {textBox_startTime.Text}";
+                string endDateTime = $"{textBox_endDate.Text} {textBox_endTime.Text}";
+                DateTime startDateTimeParsed = DateTime.ParseExact(startDateTime, "dd.MM.yyyy HH:mm:ss", null);
+                DateTime endDateTimeParsed = DateTime.ParseExact(endDateTime, "dd.MM.yyyy HH:mm:ss", null);
+                DateTime currentDateTime = DateTime.Now;
+
+                parkingTableAdapter.UpdateQuery(
+                    Convert.ToInt32(textBox_spaceID.Text),
                     Convert.ToInt32(textBox_vehicleID.Text),
                     textBox_startDate.Text.ToString(),
                     textBox_startTime.Text.ToString(),
                     textBox_endDate.Text.ToString(),
                     textBox_endTime.Text.ToString(),
-                    Convert.ToInt32(textBox_parkingID.Text));            
+                    Convert.ToInt32(textBox_parkingID.Text));
+                if (endDateTimeParsed < currentDateTime)
+                {
+                    spacesTableAdapter.UpdateStatus("Вільне", Convert.ToInt32(textBox_spaceID.Text));
+                }
+                else
+                {
+                    spacesTableAdapter.UpdateStatus("Зайняте", Convert.ToInt32(textBox_spaceID.Text));
+                }
             }
             else 
             {
-                parkingTableAdapter.InsertQuery(Convert.ToInt32(textBox_spaceID.Text),
+                parkingTableAdapter.InsertQuery(
+                    Convert.ToInt32(textBox_spaceID.Text),
                     Convert.ToInt32(textBox_vehicleID.Text),
                     textBox_startDate.Text.ToString(),
                     textBox_startTime.Text.ToString(),
                     textBox_endDate.Text.ToString(),
-                    textBox_endTime.Text.ToString());            
+                    textBox_endTime.Text.ToString());
+                spacesTableAdapter.UpdateStatus("Зайняте", Convert.ToInt32(textBox_spaceID.Text));
             }
             Close();
         }

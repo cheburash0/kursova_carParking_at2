@@ -202,7 +202,7 @@ SELECT log_id, event_type, event_time, description, client_id FROM EventLog WHER
               <Mapping SourceColumn="client_id" DataSetColumn="client_id" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[EventLog] WHERE [log_id] = @log_id</CommandText>
@@ -212,7 +212,7 @@ SELECT log_id, event_type, event_time, description, client_id FROM EventLog WHER
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.EventLog" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.EventLog" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT log_id, event_type, event_time, description, client_id FROM dbo.EventLog
@@ -223,7 +223,7 @@ WHERE [log_id] = @log_id;</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[EventLog] ([event_type], [event_time], [description], [client_id]) VALUES (@event_type, @event_time, @description, @client_id);</CommandText>
@@ -236,7 +236,7 @@ WHERE [log_id] = @log_id;</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[EventLog] SET [event_type] = @event_type, [event_time] = @event_time, [description] = @description, [client_id] = @client_id WHERE [log_id] = @log_id</CommandText>
@@ -483,7 +483,7 @@ SELECT payment_id, amount, payment_date, parking_id FROM Payments WHERE (payment
               <Mapping SourceColumn="parking_id" DataSetColumn="parking_id" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Payments] WHERE [payment_id] = @payment_id</CommandText>
@@ -493,7 +493,7 @@ SELECT payment_id, amount, payment_date, parking_id FROM Payments WHERE (payment
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.Payments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.Payments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT payment_id, amount, payment_date, parking_id FROM dbo.Payments
@@ -504,7 +504,7 @@ WHERE [payment_id] =@payment_id;</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Payments] ([amount], [payment_date], [parking_id]) VALUES (@amount, @payment_date, @parking_id);
@@ -517,7 +517,7 @@ WHERE [payment_id] =@payment_id;</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Payments] SET [amount] = @amount, [payment_date] = @payment_date, [parking_id] = @parking_id
@@ -646,6 +646,17 @@ WHERE  [space_id] = @space_id;</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStatus" Modifier="Public" Name="UpdateStatus" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateStatus">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE [dbo].[Spaces] SET [space_status] = @status WHERE [space_id] = @Id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="status" ColumnName="space_status" DataSourceName="kursova_carParking.dbo.Spaces" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@status" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="space_status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="space_id" DataSourceName="kursova_carParking.dbo.Spaces" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="space_id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TariffsTableAdapter" GeneratorDataComponentClassName="TariffsTableAdapter" Name="Tariffs" UserDataComponentName="TariffsTableAdapter">
@@ -704,7 +715,7 @@ SELECT tariff_id, day_coefficient, night_coefficient, month_coefficient FROM Tar
               <Mapping SourceColumn="month_coefficient" DataSetColumn="month_coefficient" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Tariffs] WHERE [tariff_id] = @tariff_id</CommandText>
@@ -714,7 +725,7 @@ SELECT tariff_id, day_coefficient, night_coefficient, month_coefficient FROM Tar
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.Tariffs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="kursova_carParking.dbo.Tariffs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT tariff_id, day_coefficient, night_coefficient, month_coefficient FROM dbo.Tariffs
@@ -725,7 +736,7 @@ WHERE [tariff_id] = @tariff_id;</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Tariffs] ([day_coefficient], [night_coefficient], [month_coefficient]) VALUES (@day_coefficient, @night_coefficient, @month_coefficient);</CommandText>
@@ -737,7 +748,7 @@ WHERE [tariff_id] = @tariff_id;</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQuery">
+              <DbSource ConnectionRef="kursova_carParkingConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Tariffs] SET [day_coefficient] = @day_coefficient, [night_coefficient] = @night_coefficient, [month_coefficient] = @month_coefficient WHERE [tariff_id] = @tariff_id;</CommandText>
@@ -1110,12 +1121,12 @@ WHERE  (vehicle_id = @vehicle_id)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__EventLog__client__47DBAE45" msdata:parent="Clients" msdata:child="EventLog" msdata:parentkey="client_id" msdata:childkey="client_id" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="EventLog" msprop:Generator_RelationVarName="relationFK__EventLog__client__47DBAE45" msprop:Generator_ChildPropName="GetEventLogRows" msprop:Generator_UserRelationName="FK__EventLog__client__47DBAE45" msprop:Generator_ParentPropName="ClientsRow" />
-      <msdata:Relationship name="FK__Parking__space_i__412EB0B6" msdata:parent="Spaces" msdata:child="Parking" msdata:parentkey="space_id" msdata:childkey="space_id" msprop:Generator_UserParentTable="Spaces" msprop:Generator_UserChildTable="Parking" msprop:Generator_RelationVarName="relationFK__Parking__space_i__412EB0B6" msprop:Generator_ChildPropName="GetParkingRows" msprop:Generator_ParentPropName="SpacesRow" msprop:Generator_UserRelationName="FK__Parking__space_i__412EB0B6" />
-      <msdata:Relationship name="FK__Parking__vehicle__4222D4EF" msdata:parent="Vehicles" msdata:child="Parking" msdata:parentkey="vehicle_id" msdata:childkey="vehicle_id" msprop:Generator_UserParentTable="Vehicles" msprop:Generator_UserChildTable="Parking" msprop:Generator_RelationVarName="relationFK__Parking__vehicle__4222D4EF" msprop:Generator_ChildPropName="GetParkingRows" msprop:Generator_ParentPropName="VehiclesRow" msprop:Generator_UserRelationName="FK__Parking__vehicle__4222D4EF" />
-      <msdata:Relationship name="FK__Payments__parkin__44FF419A" msdata:parent="Parking" msdata:child="Payments" msdata:parentkey="parking_id" msdata:childkey="parking_id" msprop:Generator_UserParentTable="Parking" msprop:Generator_UserChildTable="Payments" msprop:Generator_RelationVarName="relationFK__Payments__parkin__44FF419A" msprop:Generator_ChildPropName="GetPaymentsRows" msprop:Generator_UserRelationName="FK__Payments__parkin__44FF419A" msprop:Generator_ParentPropName="ParkingRow" />
-      <msdata:Relationship name="FK__Spaces__tariff_i__3E52440B" msdata:parent="Tariffs" msdata:child="Spaces" msdata:parentkey="tariff_id" msdata:childkey="tariff_id" msprop:Generator_UserParentTable="Tariffs" msprop:Generator_UserChildTable="Spaces" msprop:Generator_RelationVarName="relationFK__Spaces__tariff_i__3E52440B" msprop:Generator_ChildPropName="GetSpacesRows" msprop:Generator_ParentPropName="TariffsRow" msprop:Generator_UserRelationName="FK__Spaces__tariff_i__3E52440B" />
-      <msdata:Relationship name="FK__Vehicles__client__398D8EEE" msdata:parent="Clients" msdata:child="Vehicles" msdata:parentkey="client_id" msdata:childkey="client_id" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="Vehicles" msprop:Generator_RelationVarName="relationFK__Vehicles__client__398D8EEE" msprop:Generator_ChildPropName="GetVehiclesRows" msprop:Generator_UserRelationName="FK__Vehicles__client__398D8EEE" msprop:Generator_ParentPropName="ClientsRow" />
+      <msdata:Relationship name="FK__EventLog__client__47DBAE45" msdata:parent="Clients" msdata:child="EventLog" msdata:parentkey="client_id" msdata:childkey="client_id" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="EventLog" msprop:Generator_RelationVarName="relationFK__EventLog__client__47DBAE45" msprop:Generator_ChildPropName="GetEventLogRows" msprop:Generator_ParentPropName="ClientsRow" msprop:Generator_UserRelationName="FK__EventLog__client__47DBAE45" />
+      <msdata:Relationship name="FK__Parking__space_i__412EB0B6" msdata:parent="Spaces" msdata:child="Parking" msdata:parentkey="space_id" msdata:childkey="space_id" msprop:Generator_UserParentTable="Spaces" msprop:Generator_UserChildTable="Parking" msprop:Generator_RelationVarName="relationFK__Parking__space_i__412EB0B6" msprop:Generator_ChildPropName="GetParkingRows" msprop:Generator_UserRelationName="FK__Parking__space_i__412EB0B6" msprop:Generator_ParentPropName="SpacesRow" />
+      <msdata:Relationship name="FK__Parking__vehicle__4222D4EF" msdata:parent="Vehicles" msdata:child="Parking" msdata:parentkey="vehicle_id" msdata:childkey="vehicle_id" msprop:Generator_UserParentTable="Vehicles" msprop:Generator_UserChildTable="Parking" msprop:Generator_RelationVarName="relationFK__Parking__vehicle__4222D4EF" msprop:Generator_ChildPropName="GetParkingRows" msprop:Generator_UserRelationName="FK__Parking__vehicle__4222D4EF" msprop:Generator_ParentPropName="VehiclesRow" />
+      <msdata:Relationship name="FK__Payments__parkin__44FF419A" msdata:parent="Parking" msdata:child="Payments" msdata:parentkey="parking_id" msdata:childkey="parking_id" msprop:Generator_UserParentTable="Parking" msprop:Generator_UserChildTable="Payments" msprop:Generator_RelationVarName="relationFK__Payments__parkin__44FF419A" msprop:Generator_ChildPropName="GetPaymentsRows" msprop:Generator_ParentPropName="ParkingRow" msprop:Generator_UserRelationName="FK__Payments__parkin__44FF419A" />
+      <msdata:Relationship name="FK__Spaces__tariff_i__3E52440B" msdata:parent="Tariffs" msdata:child="Spaces" msdata:parentkey="tariff_id" msdata:childkey="tariff_id" msprop:Generator_UserParentTable="Tariffs" msprop:Generator_UserChildTable="Spaces" msprop:Generator_RelationVarName="relationFK__Spaces__tariff_i__3E52440B" msprop:Generator_ChildPropName="GetSpacesRows" msprop:Generator_UserRelationName="FK__Spaces__tariff_i__3E52440B" msprop:Generator_ParentPropName="TariffsRow" />
+      <msdata:Relationship name="FK__Vehicles__client__398D8EEE" msdata:parent="Clients" msdata:child="Vehicles" msdata:parentkey="client_id" msdata:childkey="client_id" msprop:Generator_UserParentTable="Clients" msprop:Generator_UserChildTable="Vehicles" msprop:Generator_RelationVarName="relationFK__Vehicles__client__398D8EEE" msprop:Generator_ChildPropName="GetVehiclesRows" msprop:Generator_ParentPropName="ClientsRow" msprop:Generator_UserRelationName="FK__Vehicles__client__398D8EEE" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
