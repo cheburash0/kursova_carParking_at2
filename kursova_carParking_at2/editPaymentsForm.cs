@@ -21,6 +21,9 @@ namespace kursova_carParking_at2
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             paymentsTableAdapter.Fill(kursova_carParkingDataSet.Payments);
+            parkingTableAdapter.Fill(kursova_carParkingDataSet.Parking);
+            spacesTableAdapter.Fill(kursova_carParkingDataSet.Spaces);
+            tariffsTableAdapter.Fill(kursova_carParkingDataSet.Tariffs);
             edit = false;
         }
 
@@ -39,31 +42,129 @@ namespace kursova_carParking_at2
             textBox_paymentDate.Text = paymentDate.ToString("dd.MM.yyyy");
             textBox_parkingID.Text = parkingID.ToString();
         }
+
+        private decimal CalculateAmount(int parkingId)
+        {
+            try
+            {
+                // 1. Получить данные о парковочной сессии (Parking)
+                var parkingRow = kursova_carParkingDataSet.Parking
+                    .AsEnumerable()
+                    .FirstOrDefault(row => row.Field<int>("parking_id") == parkingId);
+
+                if (parkingRow == null)
+                    throw new Exception("Парковочная сессия не найдена!");
+
+                int spaceId = parkingRow.Field<int>("space_id");
+                string startDateTimeString = $"{parkingRow.Field<DateTime>("start_date").ToString("dd.MM.yyyy")} {parkingRow.Field<TimeSpan>("start_time").ToString(@"hh\:mm\:ss")}";
+                string endDateTimeString = $"{parkingRow.Field<DateTime>("end_date").ToString("dd.MM.yyyy")} {parkingRow.Field<TimeSpan>("end_time").ToString(@"hh\:mm\:ss")}";
+
+                DateTime startDateTime = DateTime.ParseExact(startDateTimeString, "dd.MM.yyyy HH:mm:ss", null);
+                DateTime endDateTime = DateTime.ParseExact(endDateTimeString, "dd.MM.yyyy HH:mm:ss", null);
+
+                // 2. Получить данные о месте (Spaces)
+                var spaceRow = kursova_carParkingDataSet.Spaces
+                    .AsEnumerable()
+                    .FirstOrDefault(row => row.Field<int>("space_id") == spaceId);
+
+                if (spaceRow == null)
+                    throw new Exception("Информация о месте не найдена!");
+
+                int tariffId = spaceRow.Field<int>("tariff_id");
+                decimal pricePerHour = spaceRow.Field<decimal>("price_per_hour");
+
+                // 3. Получить коэффициенты тарифа (Tariffs)
+                var tariffRow = kursova_carParkingDataSet.Tariffs
+                    .AsEnumerable()
+                    .FirstOrDefault(row => row.Field<int>("tariff_id") == tariffId);
+
+                if (tariffRow == null)
+                    throw new Exception("Информация о тарифе не найдена!");
+
+                decimal dayCoefficient = tariffRow.Field<decimal>("day_coefficient");
+                decimal nightCoefficient = tariffRow.Field<decimal>("night_coefficient");
+                decimal monthCoefficient = tariffRow.Field<decimal>("month_coefficient");
+
+                // 4. Расчет количества часов
+                TimeSpan totalDuration = endDateTime - startDateTime;
+                int totalHours = (int)totalDuration.TotalHours;
+
+                int dayHours = 0;
+                int nightHours = 0;
+
+                DateTime current = startDateTime;
+                for (int i = 0; i < totalHours; i++)
+                {
+                    if (current.Hour >= 6 && current.Hour < 22) // Дневное время
+                        dayHours++;
+                    else // Ночное время
+                        nightHours++;
+
+                    current = current.AddHours(1);
+                }
+
+                // 5. Расчет стоимости
+                decimal dayCost = dayHours * pricePerHour * dayCoefficient;
+                decimal nightCost = nightHours * pricePerHour * nightCoefficient;
+                decimal totalCost = dayCost + nightCost;
+
+                // Применяем месячный коэффициент, если парковка длилась более 30 дней
+                if (totalDuration.TotalDays > 30)
+                    totalCost *= monthCoefficient;
+
+                return totalCost;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при расчете суммы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         private void button_OK_Click(object sender, EventArgs e)
         {
-            if (edit)
+            try
             {
-                paymentsTableAdapter.UpdateQuery(
-                    Convert.ToDecimal(textBox_amount.Text),
-                    Convert.ToDateTime(textBox_paymentDate.Text),
-                    Convert.ToInt32(textBox_parkingID.Text),
-                    Convert.ToInt32(textBox_paymentID.Text));
+                int parkingId = Convert.ToInt32(textBox_parkingID.Text);
+
+                // Рассчитываем сумму
+                decimal amount = CalculateAmount(parkingId);
+
+                if (edit)
+                {
+                    paymentsTableAdapter.UpdateQuery(
+                        amount, // Рассчитанная сумма
+                        Convert.ToDateTime(textBox_paymentDate.Text),
+                        parkingId,
+                        Convert.ToInt32(textBox_paymentID.Text));
+                }
+                else
+                {
+                    paymentsTableAdapter.InsertQuery(
+                        amount, // Рассчитанная сумма
+                        Convert.ToDateTime(textBox_paymentDate.Text),
+                        parkingId);
+                }
+
+                IsChanged = true;
+                RefreshPaymentsData?.Invoke();
+                MessageBox.Show("Оплата успешно добавлена/обновлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
-            else 
+            catch (Exception ex)
             {
-                paymentsTableAdapter.InsertQuery(
-                    Convert.ToDecimal(textBox_amount.Text),
-                    Convert.ToDateTime(textBox_paymentDate.Text),
-                    Convert.ToInt32(textBox_parkingID.Text));
+                MessageBox.Show($"Ошибка при сохранении оплаты: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            IsChanged = true;
-            RefreshPaymentsData?.Invoke();
-            Close();
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void editPaymentsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

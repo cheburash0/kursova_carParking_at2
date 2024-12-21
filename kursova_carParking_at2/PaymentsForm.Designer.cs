@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.paymentsDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.button_deletePayment = new System.Windows.Forms.Button();
             this.button_editPayment = new System.Windows.Forms.Button();
             this.button_addPayment = new System.Windows.Forms.Button();
@@ -40,14 +46,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_paymentsFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.paymentsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.PaymentsTableAdapter();
             this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
+            this.parkingTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ParkingTableAdapter();
+            this.spacesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.SpacesTableAdapter();
+            this.tariffsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TariffsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
@@ -81,6 +84,49 @@
             this.paymentsDataGridView.Size = new System.Drawing.Size(776, 142);
             this.paymentsDataGridView.TabIndex = 12;
             this.paymentsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.paymentsDataGridView_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "payment_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "payment_id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "amount";
+            this.dataGridViewTextBoxColumn2.HeaderText = "amount";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "payment_date";
+            this.dataGridViewTextBoxColumn3.HeaderText = "payment_date";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "parking_id";
+            this.dataGridViewTextBoxColumn4.HeaderText = "parking_id";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // paymentsBindingSource
+            // 
+            this.paymentsBindingSource.DataMember = "Payments";
+            this.paymentsBindingSource.DataSource = this.kursova_carParkingDataSet;
+            // 
+            // kursova_carParkingDataSet
+            // 
+            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
+            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button_deletePayment
             // 
@@ -193,49 +239,6 @@
             this.label1.Text = "Фільтр";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "payment_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "payment_id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "amount";
-            this.dataGridViewTextBoxColumn2.HeaderText = "amount";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "payment_date";
-            this.dataGridViewTextBoxColumn3.HeaderText = "payment_date";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "parking_id";
-            this.dataGridViewTextBoxColumn4.HeaderText = "parking_id";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // paymentsBindingSource
-            // 
-            this.paymentsBindingSource.DataMember = "Payments";
-            this.paymentsBindingSource.DataSource = this.kursova_carParkingDataSet;
-            // 
-            // kursova_carParkingDataSet
-            // 
-            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
-            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // paymentsTableAdapter
             // 
             this.paymentsTableAdapter.ClearBeforeFill = true;
@@ -252,6 +255,18 @@
             this.tableAdapterManager.TariffsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VehiclesTableAdapter = null;
+            // 
+            // parkingTableAdapter
+            // 
+            this.parkingTableAdapter.ClearBeforeFill = true;
+            // 
+            // spacesTableAdapter
+            // 
+            this.spacesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tariffsTableAdapter
+            // 
+            this.tariffsTableAdapter.ClearBeforeFill = true;
             // 
             // PaymentsForm
             // 
@@ -302,5 +317,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_paymentsFilter;
         private System.Windows.Forms.Label label1;
+        private kursova_carParkingDataSetTableAdapters.ParkingTableAdapter parkingTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.SpacesTableAdapter spacesTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.TariffsTableAdapter tariffsTableAdapter;
     }
 }

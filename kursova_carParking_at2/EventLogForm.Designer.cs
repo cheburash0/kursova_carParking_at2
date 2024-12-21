@@ -29,16 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
-            this.eventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eventLogTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.EventLogTableAdapter();
-            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             this.eventLogDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.button_deleteLog = new System.Windows.Forms.Button();
             this.button_editLog = new System.Windows.Forms.Button();
@@ -47,37 +38,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_logSort = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).BeginInit();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
+            this.eventLogTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.EventLogTableAdapter();
+            this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
+            this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
+            this.clientsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ClientsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // kursova_carParkingDataSet
-            // 
-            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
-            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // eventLogBindingSource
-            // 
-            this.eventLogBindingSource.DataMember = "EventLog";
-            this.eventLogBindingSource.DataSource = this.kursova_carParkingDataSet;
-            // 
-            // eventLogTableAdapter
-            // 
-            this.eventLogTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClientsTableAdapter = null;
-            this.tableAdapterManager.EventLogTableAdapter = this.eventLogTableAdapter;
-            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
-            this.tableAdapterManager.ParkingTableAdapter = null;
-            this.tableAdapterManager.PaymentsTableAdapter = null;
-            this.tableAdapterManager.SpacesTableAdapter = null;
-            this.tableAdapterManager.TariffsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.VehiclesTableAdapter = null;
             // 
             // eventLogDataGridView
             // 
@@ -96,47 +71,6 @@
             this.eventLogDataGridView.RowTemplate.Height = 24;
             this.eventLogDataGridView.Size = new System.Drawing.Size(776, 135);
             this.eventLogDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "log_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "log_id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "event_type";
-            this.dataGridViewTextBoxColumn2.HeaderText = "event_type";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "event_time";
-            this.dataGridViewTextBoxColumn3.HeaderText = "event_time";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "description";
-            this.dataGridViewTextBoxColumn4.HeaderText = "description";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "client_id";
-            this.dataGridViewTextBoxColumn5.HeaderText = "client_id";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // label2
             // 
@@ -238,6 +172,82 @@
             this.label3.Text = "Сортування";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "log_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "log_id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "event_type";
+            this.dataGridViewTextBoxColumn2.HeaderText = "event_type";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "event_time";
+            this.dataGridViewTextBoxColumn3.HeaderText = "event_time";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "description";
+            this.dataGridViewTextBoxColumn4.HeaderText = "description";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "client_id";
+            this.dataGridViewTextBoxColumn5.HeaderText = "client_id";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // eventLogBindingSource
+            // 
+            this.eventLogBindingSource.DataMember = "EventLog";
+            this.eventLogBindingSource.DataSource = this.kursova_carParkingDataSet;
+            // 
+            // kursova_carParkingDataSet
+            // 
+            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
+            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // eventLogTableAdapter
+            // 
+            this.eventLogTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientsTableAdapter = null;
+            this.tableAdapterManager.EventLogTableAdapter = this.eventLogTableAdapter;
+            this.tableAdapterManager.ParkingSummaryTableAdapter = null;
+            this.tableAdapterManager.ParkingTableAdapter = null;
+            this.tableAdapterManager.PaymentsTableAdapter = null;
+            this.tableAdapterManager.SpacesTableAdapter = null;
+            this.tableAdapterManager.TariffsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.VehiclesTableAdapter = null;
+            // 
+            // vehiclesTableAdapter
+            // 
+            this.vehiclesTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
             // EventLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,9 +266,9 @@
             this.Name = "EventLogForm";
             this.Text = "EventLogForm";
             this.Load += new System.EventHandler(this.EventLogForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +294,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_logSort;
         private System.Windows.Forms.Label label3;
+        private kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter vehiclesTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.ClientsTableAdapter clientsTableAdapter;
     }
 }

@@ -42,6 +42,9 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.paymentsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.PaymentsTableAdapter();
+            this.parkingTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ParkingTableAdapter();
+            this.spacesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.SpacesTableAdapter();
+            this.tariffsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TariffsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             this.SuspendLayout();
@@ -154,6 +157,18 @@
             // 
             this.paymentsTableAdapter.ClearBeforeFill = true;
             // 
+            // parkingTableAdapter
+            // 
+            this.parkingTableAdapter.ClearBeforeFill = true;
+            // 
+            // spacesTableAdapter
+            // 
+            this.spacesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tariffsTableAdapter
+            // 
+            this.tariffsTableAdapter.ClearBeforeFill = true;
+            // 
             // editPaymentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -172,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "editPaymentsForm";
             this.Text = "editPaymentsForm";
+            this.Load += new System.EventHandler(this.editPaymentsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -194,5 +210,8 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private kursova_carParkingDataSet kursova_carParkingDataSet;
         private kursova_carParkingDataSetTableAdapters.PaymentsTableAdapter paymentsTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.ParkingTableAdapter parkingTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.SpacesTableAdapter spacesTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.TariffsTableAdapter tariffsTableAdapter;
     }
 }

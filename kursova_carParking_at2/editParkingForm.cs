@@ -104,6 +104,8 @@ namespace kursova_carParking_at2
                 DateTime endDateTimeParsed = DateTime.ParseExact(endDateTime, "dd.MM.yyyy HH:mm:ss", null);
                 DateTime currentDateTime = DateTime.Now;
 
+
+
                 parkingTableAdapter.UpdateQuery(
                     Convert.ToInt32(textBox_spaceID.Text),
                     Convert.ToInt32(textBox_vehicleID.Text),

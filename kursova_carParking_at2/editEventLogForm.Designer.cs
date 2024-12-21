@@ -44,6 +44,8 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.eventLogTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.EventLogTableAdapter();
+            this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
+            this.clientsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ClientsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             this.SuspendLayout();
@@ -178,6 +180,14 @@
             // 
             this.eventLogTableAdapter.ClearBeforeFill = true;
             // 
+            // vehiclesTableAdapter
+            // 
+            this.vehiclesTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
             // editEventLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,5 +233,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private kursova_carParkingDataSet kursova_carParkingDataSet;
         private kursova_carParkingDataSetTableAdapters.EventLogTableAdapter eventLogTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter vehiclesTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.ClientsTableAdapter clientsTableAdapter;
     }
 }

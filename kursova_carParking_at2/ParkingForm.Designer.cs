@@ -51,6 +51,8 @@
             this.textBox_vehicleFilter = new System.Windows.Forms.TextBox();
             this.textBox_parkingSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.spacesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.SpacesTableAdapter();
+            this.eventLogTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.EventLogTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingDataGridView)).BeginInit();
@@ -276,6 +278,14 @@
             this.label1.Text = "Пошук";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // spacesTableAdapter
+            // 
+            this.spacesTableAdapter.ClearBeforeFill = true;
+            // 
+            // eventLogTableAdapter
+            // 
+            this.eventLogTableAdapter.ClearBeforeFill = true;
+            // 
             // ParkingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,5 +338,7 @@
         private System.Windows.Forms.TextBox textBox_vehicleFilter;
         private System.Windows.Forms.TextBox textBox_parkingSearch;
         private System.Windows.Forms.Label label1;
+        private kursova_carParkingDataSetTableAdapters.SpacesTableAdapter spacesTableAdapter;
+        private kursova_carParkingDataSetTableAdapters.EventLogTableAdapter eventLogTableAdapter;
     }
 }

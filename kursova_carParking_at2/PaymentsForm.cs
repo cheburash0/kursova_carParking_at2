@@ -25,6 +25,7 @@ namespace kursova_carParking_at2
 
         }
 
+
         private bool edit;
         private void ApplySortingOrFiltering()
         {
