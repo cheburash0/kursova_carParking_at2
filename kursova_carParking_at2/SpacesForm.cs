@@ -249,34 +249,54 @@ namespace kursova_carParking_at2
 
         private void textBox_spacesSearch_TextChanged(object sender, EventArgs e)
         {
-            string filterText = textBox_spacesSearch.Text.Trim();
+            string searchText = textBox_spacesSearch.Text.Trim().ToLower();
 
-            // Якщо поле пошуку порожнє, показуємо всі записи
-            if (string.IsNullOrEmpty(filterText))
+            // Если текст пустой, сбрасываем подсветку
+            if (string.IsNullOrEmpty(searchText))
             {
-                spacesDataGridView.DataSource = kursova_carParkingDataSet.Spaces;
+                foreach (DataGridViewRow row in spacesDataGridView.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сбрасываем фон
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сбрасываем текст
+                }
                 return;
             }
 
-            // Виконуємо пошук за space_id, space_status або location
-            var filteredRows = kursova_carParkingDataSet.Spaces.AsEnumerable()
-                .Where(row =>
+            // Перебираем строки DataGridView и подсвечиваем совпадения
+            foreach (DataGridViewRow row in spacesDataGridView.Rows)
+            {
+                bool isMatch = false;
+
+                // Проверяем совпадения по столбцам 0, 1 и 3
+                if (row.Cells.Count > 0 && row.Cells[0].Value != null &&
+                    row.Cells[0].Value.ToString().ToLower().Contains(searchText)) // Столбец 0
                 {
-                    // Перевірка, чи є введений текст числом (для space_id)
-                    if (int.TryParse(filterText, out int spaceId))
-                    {
-                        return row.Field<int>("space_id") == spaceId;
-                    }
+                    isMatch = true;
+                }
+                else if (row.Cells.Count > 1 && row.Cells[1].Value != null &&
+                         row.Cells[1].Value.ToString().ToLower().Contains(searchText)) // Столбец 1
+                {
+                    isMatch = true;
+                }
+                else if (row.Cells.Count > 3 && row.Cells[3].Value != null &&
+                         row.Cells[3].Value.ToString().ToLower().Contains(searchText)) // Столбец 3
+                {
+                    isMatch = true;
+                }
 
-                    // Пошук за текстовим співпадінням у space_status або location
-                    return row.Field<string>("space_status").IndexOf(filterText, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                           row.Field<string>("location").IndexOf(filterText, StringComparison.OrdinalIgnoreCase) >= 0;
-                });
+                // Применяем подсветку
+                if (isMatch)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow; // Подсветка найденного
+                    row.DefaultCellStyle.ForeColor = Color.Black;  // Цвет текста
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сброс фона
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сброс текста
+                }
+            }
 
-            // Відображення результатів у DataGridView
-            spacesDataGridView.DataSource = filteredRows.Any()
-                ? filteredRows.CopyToDataTable()
-                : kursova_carParkingDataSet.Spaces.Clone();
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -33,6 +33,13 @@
             this.button_editClients = new System.Windows.Forms.Button();
             this.button_deleteClients = new System.Windows.Forms.Button();
             this.dataGridView_clients = new System.Windows.Forms.DataGridView();
+            this.clientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_clientsSearch = new System.Windows.Forms.TextBox();
@@ -41,28 +48,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox_vehiclesCount = new System.Windows.Forms.CheckBox();
             this.vehiclesDataGridView = new System.Windows.Forms.DataGridView();
-            this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
-            this.clientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientsTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.ClientsTableAdapter();
             this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
             this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
+            this.checkBox_searchByFirstName = new System.Windows.Forms.CheckBox();
+            this.checkBox_searchByLastName = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_clients)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button_addClients
@@ -123,6 +125,57 @@
             this.dataGridView_clients.TabIndex = 7;
             this.dataGridView_clients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_clients_CellContentClick);
             // 
+            // clientidDataGridViewTextBoxColumn
+            // 
+            this.clientidDataGridViewTextBoxColumn.DataPropertyName = "client_id";
+            this.clientidDataGridViewTextBoxColumn.HeaderText = "client_id";
+            this.clientidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientidDataGridViewTextBoxColumn.Name = "clientidDataGridViewTextBoxColumn";
+            this.clientidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientidDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "first_name";
+            this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "last_name";
+            this.lastnameDataGridViewTextBoxColumn.HeaderText = "last_name";
+            this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // phonenumberDataGridViewTextBoxColumn
+            // 
+            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
+            this.phonenumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientsBindingSource
+            // 
+            this.clientsBindingSource.DataMember = "Clients";
+            this.clientsBindingSource.DataSource = this.kursova_carParkingDataSet;
+            // 
+            // kursova_carParkingDataSet
+            // 
+            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
+            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -138,7 +191,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 58);
+            this.label1.Location = new System.Drawing.Point(12, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 38);
             this.label1.TabIndex = 9;
@@ -148,7 +201,7 @@
             // 
             // textBox_clientsSearch
             // 
-            this.textBox_clientsSearch.Location = new System.Drawing.Point(19, 109);
+            this.textBox_clientsSearch.Location = new System.Drawing.Point(19, 93);
             this.textBox_clientsSearch.Multiline = true;
             this.textBox_clientsSearch.Name = "textBox_clientsSearch";
             this.textBox_clientsSearch.Size = new System.Drawing.Size(120, 24);
@@ -159,7 +212,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(217, 59);
+            this.label3.Location = new System.Drawing.Point(217, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 38);
             this.label3.TabIndex = 11;
@@ -176,7 +229,7 @@
             "Ім\'я (Я-А)",
             "Прізвище (А-Я)",
             "Прізвище (Я-А)"});
-            this.comboBox_clientsSort.Location = new System.Drawing.Point(224, 109);
+            this.comboBox_clientsSort.Location = new System.Drawing.Point(224, 93);
             this.comboBox_clientsSort.Name = "comboBox_clientsSort";
             this.comboBox_clientsSort.Size = new System.Drawing.Size(198, 24);
             this.comboBox_clientsSort.TabIndex = 12;
@@ -186,7 +239,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(475, 59);
+            this.label4.Location = new System.Drawing.Point(475, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 38);
             this.label4.TabIndex = 13;
@@ -196,7 +249,7 @@
             // checkBox_vehiclesCount
             // 
             this.checkBox_vehiclesCount.AutoSize = true;
-            this.checkBox_vehiclesCount.Location = new System.Drawing.Point(482, 109);
+            this.checkBox_vehiclesCount.Location = new System.Drawing.Point(482, 93);
             this.checkBox_vehiclesCount.Name = "checkBox_vehiclesCount";
             this.checkBox_vehiclesCount.Size = new System.Drawing.Size(162, 20);
             this.checkBox_vehiclesCount.TabIndex = 14;
@@ -222,11 +275,6 @@
             this.vehiclesDataGridView.RowTemplate.Height = 24;
             this.vehiclesDataGridView.Size = new System.Drawing.Size(864, 178);
             this.vehiclesDataGridView.TabIndex = 15;
-            // 
-            // vehiclesBindingSource
-            // 
-            this.vehiclesBindingSource.DataMember = "FK__Vehicles__client__398D8EEE";
-            this.vehiclesBindingSource.DataSource = this.clientsBindingSource;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -277,56 +325,10 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 125;
             // 
-            // clientsBindingSource
+            // vehiclesBindingSource
             // 
-            this.clientsBindingSource.DataMember = "Clients";
-            this.clientsBindingSource.DataSource = this.kursova_carParkingDataSet;
-            // 
-            // kursova_carParkingDataSet
-            // 
-            this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
-            this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientidDataGridViewTextBoxColumn
-            // 
-            this.clientidDataGridViewTextBoxColumn.DataPropertyName = "client_id";
-            this.clientidDataGridViewTextBoxColumn.HeaderText = "client_id";
-            this.clientidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientidDataGridViewTextBoxColumn.Name = "clientidDataGridViewTextBoxColumn";
-            this.clientidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientidDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // firstnameDataGridViewTextBoxColumn
-            // 
-            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name";
-            this.firstnameDataGridViewTextBoxColumn.HeaderText = "first_name";
-            this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
-            this.firstnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "last_name";
-            this.lastnameDataGridViewTextBoxColumn.HeaderText = "last_name";
-            this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            this.lastnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // phonenumberDataGridViewTextBoxColumn
-            // 
-            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
-            this.phonenumberDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 125;
+            this.vehiclesBindingSource.DataMember = "FK__Vehicles__client__398D8EEE";
+            this.vehiclesBindingSource.DataSource = this.clientsBindingSource;
             // 
             // clientsTableAdapter
             // 
@@ -349,12 +351,34 @@
             this.tableAdapterManager.UpdateOrder = kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VehiclesTableAdapter = this.vehiclesTableAdapter;
             // 
+            // checkBox_searchByFirstName
+            // 
+            this.checkBox_searchByFirstName.AutoSize = true;
+            this.checkBox_searchByFirstName.Location = new System.Drawing.Point(19, 123);
+            this.checkBox_searchByFirstName.Name = "checkBox_searchByFirstName";
+            this.checkBox_searchByFirstName.Size = new System.Drawing.Size(51, 20);
+            this.checkBox_searchByFirstName.TabIndex = 16;
+            this.checkBox_searchByFirstName.Text = "Ім\'я";
+            this.checkBox_searchByFirstName.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_searchByLastName
+            // 
+            this.checkBox_searchByLastName.AutoSize = true;
+            this.checkBox_searchByLastName.Location = new System.Drawing.Point(19, 150);
+            this.checkBox_searchByLastName.Name = "checkBox_searchByLastName";
+            this.checkBox_searchByLastName.Size = new System.Drawing.Size(91, 20);
+            this.checkBox_searchByLastName.TabIndex = 17;
+            this.checkBox_searchByLastName.Text = "Прізвище";
+            this.checkBox_searchByLastName.UseVisualStyleBackColor = true;
+            // 
             // ClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(896, 581);
+            this.Controls.Add(this.checkBox_searchByLastName);
+            this.Controls.Add(this.checkBox_searchByFirstName);
             this.Controls.Add(this.vehiclesDataGridView);
             this.Controls.Add(this.checkBox_vehiclesCount);
             this.Controls.Add(this.label4);
@@ -371,10 +395,10 @@
             this.Text = "ClientsForm";
             this.Load += new System.EventHandler(this.ClientsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_clients)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,5 +435,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.CheckBox checkBox_searchByFirstName;
+        private System.Windows.Forms.CheckBox checkBox_searchByLastName;
     }
 }

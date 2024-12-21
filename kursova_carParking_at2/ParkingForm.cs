@@ -236,17 +236,53 @@ namespace kursova_carParking_at2
 
         private void textBox_parkingSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox_parkingSearch.Text.Trim();
+            string searchText = textBox_parkingSearch.Text.Trim().ToLower();
 
-            var filteredRows = kursova_carParkingDataSet.Parking.AsEnumerable()
-                .Where(row => row.Field<int?>("vehicle_id")?.ToString().Contains(searchText) == true ||
-                              row.Field<DateTime?>("start_date")?.ToString("dd/MM/yyyy").Contains(searchText) == true ||
-                              row.Field<DateTime?>("end_date")?.ToString("dd/MM/yyyy").Contains(searchText) == true);
+            // Если текст пустой, сбрасываем подсветку
+            if (string.IsNullOrEmpty(searchText))
+            {
+                foreach (DataGridViewRow row in parkingDataGridView.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+                return;
+            }
 
-            // Оновлюємо DataGridView
-            parkingDataGridView.DataSource = filteredRows.Any()
-                ? filteredRows.CopyToDataTable()
-                : kursova_carParkingDataSet.Parking.Clone();
+            // Перебираем строки DataGridView и подсвечиваем совпадения
+            foreach (DataGridViewRow row in parkingDataGridView.Rows)
+            {
+                bool isMatch = false;
+
+                // Проверяем совпадения по индексам столбцов
+                if (row.Cells.Count > 3 && row.Cells[3].Value != null && // Индекс 1 для start_date
+                         DateTime.TryParse(row.Cells[3].Value.ToString(), out DateTime startDate) &&
+                         startDate.ToString("dd/MM/yyyy").ToLower().Contains(searchText))
+                {
+                    isMatch = true;
+                }
+                
+                else if (row.Cells.Count > 5 && row.Cells[5].Value != null && // Индекс 2 для end_date
+                         DateTime.TryParse(row.Cells[6].Value.ToString(), out DateTime endDate) &&
+                         endDate.ToString("dd/MM/yyyy").ToLower().Contains(searchText))
+                {
+                    isMatch = true;
+                }
+
+                // Применяем подсветку
+                if (isMatch)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+
+            
         }
 
         private void label3_Click(object sender, EventArgs e)

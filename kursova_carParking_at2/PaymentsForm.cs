@@ -157,26 +157,55 @@ namespace kursova_carParking_at2
 
         private void textBox_paymentsSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox_paymentsSearch.Text.Trim();
+            string searchText = textBox_paymentsSearch.Text.Trim().ToLower();
 
+            // Если текст пустой, сбрасываем подсветку
             if (string.IsNullOrEmpty(searchText))
             {
-                // Если текст пустой, отображаем все данные
-                paymentsDataGridView.DataSource = kursova_carParkingDataSet.Payments;
-            }
-            else
-            {
-                // Фильтруем строки на основе введенного текста
-                var filteredRows = kursova_carParkingDataSet.Payments.AsEnumerable()
-                    .Where(row =>
-                        row.Field<Decimal>("amount").ToString().Contains(searchText) ||
-                        row.Field<DateTime>("payment_date").ToString("dd.MM.yyyy").Contains(searchText) ||
-                        row.Field<int>("parking_id").ToString().Contains(searchText));
+                foreach (DataGridViewRow row in paymentsDataGridView.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сбрасываем фон
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сбрасываем текст
+                }
 
-                // Отображаем отфильтрованные данные
-                paymentsDataGridView.DataSource = filteredRows.Any()
-                    ? filteredRows.CopyToDataTable()
-                    : kursova_carParkingDataSet.Payments.Clone();
+                paymentsDataGridView.DataSource = kursova_carParkingDataSet.Payments;
+                return;
+            }
+
+            // Перебираем строки DataGridView и подсвечиваем совпадения
+            foreach (DataGridViewRow row in paymentsDataGridView.Rows)
+            {
+                bool isMatch = false;
+
+                // Проверяем совпадения по столбцам 1, 2 и 3
+                if (row.Cells.Count > 1 && row.Cells[1].Value != null &&
+                    row.Cells[1].Value.ToString().ToLower().Contains(searchText)) // Столбец 1 (amount)
+                {
+                    isMatch = true;
+                }
+                else if (row.Cells.Count > 2 && row.Cells[2].Value != null &&
+                         DateTime.TryParse(row.Cells[2].Value.ToString(), out DateTime paymentDate) &&
+                         paymentDate.ToString("dd.MM.yyyy").ToLower().Contains(searchText)) // Столбец 2 (payment_date)
+                {
+                    isMatch = true;
+                }
+                else if (row.Cells.Count > 3 && row.Cells[3].Value != null &&
+                         row.Cells[3].Value.ToString().ToLower().Contains(searchText)) // Столбец 3 (parking_id)
+                {
+                    isMatch = true;
+                }
+
+                // Применяем подсветку
+                if (isMatch)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow; // Подсветка найденного
+                    row.DefaultCellStyle.ForeColor = Color.Black;  // Цвет текста
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сброс фона
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сброс текста
+                }
             }
         }
 

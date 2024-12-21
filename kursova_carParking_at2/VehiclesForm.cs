@@ -146,35 +146,50 @@ namespace kursova_carParking_at2
 
         private void textBox_vehiclesSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox_vehiclesSearch.Text.Trim();
+            string searchText = textBox_vehiclesSearch.Text.Trim().ToLower();
 
-            // Фильтрация по полям model и licence_plate
-            var filteredRows = kursova_carParkingDataSet.Vehicles
-                .AsEnumerable()
-                .Where(row => row.Field<string>("model").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
-                           || row.Field<string>("licence_plate").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
-
-            // Обновляем dataGridView_vehicles
-            if (filteredRows.Any())
+            // Если текст пустой, сбрасываем подсветку
+            if (string.IsNullOrEmpty(searchText))
             {
-                vehiclesDataGridView.DataSource = filteredRows.CopyToDataTable();
-            }
-            else
-            {
-                vehiclesDataGridView.DataSource = kursova_carParkingDataSet.Vehicles.Clone(); // Пустая таблица
+                foreach (DataGridViewRow row in vehiclesDataGridView.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сбрасываем фон
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сбрасываем текст
+                }
+                return;
             }
 
-            // Обновляем dataGridView_aboutVehicles (если необходимо отобразить текущий результат)
-            if (vehiclesDataGridView.CurrentRow != null)
+            // Подсвечиваем строки с совпадениями
+            foreach (DataGridViewRow row in vehiclesDataGridView.Rows)
             {
-                var rowView = (DataRowView)vehiclesDataGridView.CurrentRow.DataBoundItem;
-                int vehicleId = Convert.ToInt32(rowView["vehicle_id"]);
+                bool isMatch = false;
 
-                var aboutVehiclesFiltered = kursova_carParkingDataSet.Vehicles
-                    .AsEnumerable()
-                    .Where(row => row.Field<int>("vehicle_id") == vehicleId);
+                // Проверяем совпадение в столбцах с индексами 0 и 1
+                if (row.Cells[2].Value != null &&
+                    row.Cells[2].Value.ToString().ToLower().Contains(searchText))
+                {
+                    isMatch = true;
+                }
+                else if (row.Cells[3].Value != null &&
+                         row.Cells[3].Value.ToString().ToLower().Contains(searchText))
+                {
+                    isMatch = true;
+                }
 
+                // Применяем подсветку
+                if (isMatch)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow; // Подсветка найденного
+                    row.DefaultCellStyle.ForeColor = Color.Black;  // Цвет текста
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сброс фона
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сброс текста
+                }
             }
+
+            
         }
 
         private void checkBox_vehiclesType1_CheckedChanged(object sender, EventArgs e)

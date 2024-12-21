@@ -123,35 +123,64 @@ namespace kursova_carParking_at2
         }      
         private void textBox_clientsSearch_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox_clientsSearch.Text.Trim();
+            string searchText = textBox_clientsSearch.Text.Trim().ToLower();
 
-            var filteredRows = kursova_carParkingDataSet.Clients
-                .AsEnumerable()
-                .Where(row => row.Field<string>("first_name").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
-                           || row.Field<string>("last_name").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
-
-            if (filteredRows.Any())
+            // Если строка поиска пуста, сбрасываем стили строк
+            if (string.IsNullOrEmpty(searchText))
             {
-                dataGridView_clients.DataSource = filteredRows.CopyToDataTable();
-            }
-            else
-            {
-                dataGridView_clients.DataSource = kursova_carParkingDataSet.Clients.Clone(); // Пустая таблица
+                foreach (DataGridViewRow row in dataGridView_clients.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сбрасываем цвет
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+                return;
             }
 
-            // Обновляем vehiclesDataGridView
-            if (dataGridView_clients.CurrentRow != null)
+            // Определяем, по каким номерам столбцов искать
+            var searchColumns = new List<int>();
+            if (checkBox_searchByFirstName.Checked)
+                searchColumns.Add(1); // Номер столбца для имени
+            if (checkBox_searchByLastName.Checked)
+                searchColumns.Add(2); // Номер столбца для фамилии
+
+            // Если ни один чекбокс не выбран, подсветку не выполняем
+            if (!searchColumns.Any())
             {
-                var rowView = (DataRowView)dataGridView_clients.CurrentRow.DataBoundItem;
-                int clientId = Convert.ToInt32(rowView["client_id"]);
+                foreach (DataGridViewRow row in dataGridView_clients.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+                return;
+            }
 
-                var vehiclesFiltered = kursova_carParkingDataSet.Vehicles
-                    .AsEnumerable()
-                    .Where(row => row.Field<int>("client_id") == clientId);
+            // Подсвечиваем строки с совпадением
+            foreach (DataGridViewRow row in dataGridView_clients.Rows)
+            {
+                bool isMatch = false;
 
-                vehiclesDataGridView.DataSource = vehiclesFiltered.Any()
-                    ? vehiclesFiltered.CopyToDataTable()
-                    : kursova_carParkingDataSet.Vehicles.Clone();
+                foreach (var columnIndex in searchColumns)
+                {
+                    // Проверяем существование столбца с таким индексом
+                    if (columnIndex < row.Cells.Count &&
+                        row.Cells[columnIndex].Value != null &&
+                        row.Cells[columnIndex].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        isMatch = true;
+                        break;
+                    }
+                }
+
+                if (isMatch)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow; // Подсветка фона
+                    row.DefaultCellStyle.ForeColor = Color.Black;  // Цвет текста
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White; // Сброс фона
+                    row.DefaultCellStyle.ForeColor = Color.Black; // Сброс цвета текста
+                }
             }
         }       
 
