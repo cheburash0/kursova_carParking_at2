@@ -140,10 +140,14 @@ namespace kursova_carParking_at2
                 }
                 else
                 {
+                    // Добавляем новую запись, не указывая payment_id
                     paymentsTableAdapter.InsertQuery(
                         amount, // Рассчитанная сумма
                         Convert.ToDateTime(textBox_paymentDate.Text),
                         parkingId);
+
+                    // После вставки обновляем данные для получения нового идентификатора
+                    paymentsTableAdapter.Fill(kursova_carParkingDataSet.Payments);
                 }
 
                 IsChanged = true;

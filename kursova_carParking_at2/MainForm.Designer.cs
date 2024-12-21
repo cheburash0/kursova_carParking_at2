@@ -38,9 +38,10 @@
             this.buttonSpaces = new System.Windows.Forms.Button();
             this.buttonTariffs = new System.Windows.Forms.Button();
             this.buttonPayments = new System.Windows.Forms.Button();
+            this.buttonEventLog = new System.Windows.Forms.Button();
+            this.buttonStats = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonEventLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -146,6 +147,32 @@
             this.buttonPayments.UseVisualStyleBackColor = false;
             this.buttonPayments.Click += new System.EventHandler(this.buttonPayments_Click);
             // 
+            // buttonEventLog
+            // 
+            this.buttonEventLog.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonEventLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEventLog.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEventLog.Location = new System.Drawing.Point(419, 311);
+            this.buttonEventLog.Name = "buttonEventLog";
+            this.buttonEventLog.Size = new System.Drawing.Size(158, 75);
+            this.buttonEventLog.TabIndex = 9;
+            this.buttonEventLog.Text = "Журнал подій";
+            this.buttonEventLog.UseVisualStyleBackColor = false;
+            this.buttonEventLog.Click += new System.EventHandler(this.buttonEventLog_Click);
+            // 
+            // buttonStats
+            // 
+            this.buttonStats.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonStats.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonStats.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonStats.Location = new System.Drawing.Point(615, 311);
+            this.buttonStats.Name = "buttonStats";
+            this.buttonStats.Size = new System.Drawing.Size(158, 75);
+            this.buttonStats.TabIndex = 10;
+            this.buttonStats.Text = "Статистики";
+            this.buttonStats.UseVisualStyleBackColor = false;
+            this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::kursova_carParking_at2.Properties.Resources.bumblebee_nature_png_design_5690321;
@@ -166,25 +193,13 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // buttonEventLog
-            // 
-            this.buttonEventLog.BackColor = System.Drawing.Color.DarkKhaki;
-            this.buttonEventLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEventLog.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEventLog.Location = new System.Drawing.Point(419, 311);
-            this.buttonEventLog.Name = "buttonEventLog";
-            this.buttonEventLog.Size = new System.Drawing.Size(158, 75);
-            this.buttonEventLog.TabIndex = 9;
-            this.buttonEventLog.Text = "Журнал подій";
-            this.buttonEventLog.UseVisualStyleBackColor = false;
-            this.buttonEventLog.Click += new System.EventHandler(this.buttonEventLog_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.buttonEventLog);
             this.Controls.Add(this.buttonPayments);
             this.Controls.Add(this.buttonTariffs);
@@ -197,6 +212,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -220,6 +236,7 @@
         private System.Windows.Forms.Button buttonTariffs;
         private System.Windows.Forms.Button buttonPayments;
         private System.Windows.Forms.Button buttonEventLog;
+        private System.Windows.Forms.Button buttonStats;
     }
 }
 

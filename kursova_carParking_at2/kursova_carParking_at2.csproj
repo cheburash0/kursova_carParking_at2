@@ -134,6 +134,12 @@
     <Compile Include="SpacesForm.Designer.cs">
       <DependentUpon>SpacesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatsForm.Designer.cs">
+      <DependentUpon>StatsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TariffsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </Compile>
     <EmbeddedResource Include="SpacesForm.resx">
       <DependentUpon>SpacesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsForm.resx">
+      <DependentUpon>StatsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TariffsForm.resx">
       <DependentUpon>TariffsForm.cs</DependentUpon>

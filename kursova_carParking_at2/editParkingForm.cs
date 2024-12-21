@@ -95,7 +95,6 @@ namespace kursova_carParking_at2
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-
             if (edit)
             {
                 string startDateTime = $"{textBox_startDate.Text} {textBox_startTime.Text}";
@@ -103,8 +102,6 @@ namespace kursova_carParking_at2
                 DateTime startDateTimeParsed = DateTime.ParseExact(startDateTime, "dd.MM.yyyy HH:mm:ss", null);
                 DateTime endDateTimeParsed = DateTime.ParseExact(endDateTime, "dd.MM.yyyy HH:mm:ss", null);
                 DateTime currentDateTime = DateTime.Now;
-
-
 
                 parkingTableAdapter.UpdateQuery(
                     Convert.ToInt32(textBox_spaceID.Text),
@@ -123,7 +120,7 @@ namespace kursova_carParking_at2
                     spacesTableAdapter.UpdateStatus("Зайняте", Convert.ToInt32(textBox_spaceID.Text));
                 }
             }
-            else 
+            else
             {
                 parkingTableAdapter.InsertQuery(
                     Convert.ToInt32(textBox_spaceID.Text),
