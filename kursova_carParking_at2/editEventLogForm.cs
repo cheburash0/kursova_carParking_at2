@@ -20,6 +20,9 @@ namespace kursova_carParking_at2
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            dateTimePicker_logDate.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_logDate.CustomFormat = "dd/MM/yyyy HH:mm";
+            dateTimePicker_logDate.ShowUpDown = false;
             eventLogTableAdapter.Fill(kursova_carParkingDataSet.EventLog);
             edit = false;
         }

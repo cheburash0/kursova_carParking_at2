@@ -43,6 +43,10 @@
             this.button_deleteLog = new System.Windows.Forms.Button();
             this.button_editLog = new System.Windows.Forms.Button();
             this.button_addLog = new System.Windows.Forms.Button();
+            this.comboBox_logFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox_logSort = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLogDataGridView)).BeginInit();
@@ -138,12 +142,13 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(262, 9);
+            this.label2.Location = new System.Drawing.Point(262, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(268, 38);
             this.label2.TabIndex = 11;
             this.label2.Text = "Журнал подій";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button_deleteLog
             // 
@@ -184,12 +189,65 @@
             this.button_addLog.UseVisualStyleBackColor = false;
             this.button_addLog.Click += new System.EventHandler(this.button_addTariff_Click);
             // 
+            // comboBox_logFilter
+            // 
+            this.comboBox_logFilter.FormattingEnabled = true;
+            this.comboBox_logFilter.Items.AddRange(new object[] {
+            "Без фільтру",
+            "Заїзд",
+            "Оплата",
+            "Виїзд"});
+            this.comboBox_logFilter.Location = new System.Drawing.Point(543, 89);
+            this.comboBox_logFilter.Name = "comboBox_logFilter";
+            this.comboBox_logFilter.Size = new System.Drawing.Size(198, 24);
+            this.comboBox_logFilter.TabIndex = 29;
+            this.comboBox_logFilter.SelectedIndexChanged += new System.EventHandler(this.comboBox_logFilter_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(536, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 38);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Фільтр";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox_logSort
+            // 
+            this.comboBox_logSort.FormattingEnabled = true;
+            this.comboBox_logSort.Items.AddRange(new object[] {
+            "Без сортування",
+            "Дата (за зростанням)",
+            "Дата (за спаданням)"});
+            this.comboBox_logSort.Location = new System.Drawing.Point(287, 89);
+            this.comboBox_logSort.Name = "comboBox_logSort";
+            this.comboBox_logSort.Size = new System.Drawing.Size(198, 24);
+            this.comboBox_logSort.TabIndex = 31;
+            this.comboBox_logSort.SelectedIndexChanged += new System.EventHandler(this.comboBox_logSort_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(280, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 38);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Сортування";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // EventLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(800, 384);
+            this.Controls.Add(this.comboBox_logSort);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox_logFilter);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button_deleteLog);
             this.Controls.Add(this.button_editLog);
             this.Controls.Add(this.button_addLog);
@@ -222,5 +280,9 @@
         private System.Windows.Forms.Button button_deleteLog;
         private System.Windows.Forms.Button button_editLog;
         private System.Windows.Forms.Button button_addLog;
+        private System.Windows.Forms.ComboBox comboBox_logFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox_logSort;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -134,5 +134,83 @@ namespace kursova_carParking_at2
                 MessageBox.Show("Виберіть запис для видалення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void comboBox_logFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedFilter = comboBox_logFilter.SelectedItem.ToString();
+
+            // Фільтрація даних на основі обраного критерію
+            IEnumerable<DataRow> filteredRows = null;
+
+            switch (selectedFilter)
+            {
+                case "Заїзд":
+                    filteredRows = kursova_carParkingDataSet.EventLog.AsEnumerable()
+                        .Where(row => row.Field<string>("event_type").Equals("Заїзд", StringComparison.OrdinalIgnoreCase));
+                    break;
+
+                case "Оплата":
+                    filteredRows = kursova_carParkingDataSet.EventLog.AsEnumerable()
+                        .Where(row => row.Field<string>("event_type").Equals("Оплата", StringComparison.OrdinalIgnoreCase));
+                    break;
+
+                case "Виїзд":
+                    filteredRows = kursova_carParkingDataSet.EventLog.AsEnumerable()
+                        .Where(row => row.Field<string>("event_type").Equals("Виїзд", StringComparison.OrdinalIgnoreCase));
+                    break;
+
+                case "Без фільтру": // Показуємо всі записи
+                default:
+                    filteredRows = kursova_carParkingDataSet.EventLog.AsEnumerable();
+                    break;
+            }
+
+            // Оновлюємо DataGridView
+            eventLogDataGridView.DataSource = filteredRows.Any()
+                ? filteredRows.CopyToDataTable()
+                : kursova_carParkingDataSet.EventLog.Clone();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_logSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sortOrder = comboBox_logSort.SelectedItem.ToString();
+
+            // Сортування даних за обраним критерієм
+            IEnumerable<DataRow> sortedRows = null;
+
+            switch (sortOrder)
+            {
+                case "Дата (за зростанням)": // Від найдавнішої до найновішої дати
+                    sortedRows = kursova_carParkingDataSet.EventLog.AsEnumerable()
+                        .OrderBy(row => row.Field<DateTime>("event_time"));
+                    break;
+
+                case "Дата (за спаданням)": // Від найновішої до найдавнішої дати
+                    sortedRows = kursova_carParkingDataSet.EventLog.AsEnumerable()
+                        .OrderByDescending(row => row.Field<DateTime>("event_time"));
+                    break;
+
+                case "Без сортування": // Без сортування
+                default:
+                    sortedRows = kursova_carParkingDataSet.EventLog.AsEnumerable();
+                    break;
+            }
+
+            // Оновлюємо dataGridView_eventLog
+            if (sortedRows != null && sortedRows.Any())
+            {
+                eventLogDataGridView.DataSource = sortedRows.CopyToDataTable();
+            }
+            else
+            {
+                // Якщо даних немає, показуємо порожню таблицю
+                eventLogDataGridView.DataSource = kursova_carParkingDataSet.EventLog.Clone();
+            }
+        }
     }
 }
