@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.vehiclesDataGridView = new System.Windows.Forms.DataGridView();
-            this.button_addVehicles = new System.Windows.Forms.Button();
-            this.button_editVehicles = new System.Windows.Forms.Button();
-            this.button_deleteVehicles = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +39,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kursova_carParkingDataSet = new kursova_carParking_at2.kursova_carParkingDataSet();
+            this.button_addVehicles = new System.Windows.Forms.Button();
+            this.button_editVehicles = new System.Windows.Forms.Button();
+            this.button_deleteVehicles = new System.Windows.Forms.Button();
             this.vehiclesTableAdapter = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.VehiclesTableAdapter();
             this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.checkBox_vehiclesType3 = new System.Windows.Forms.CheckBox();
             this.comboBox_vehiclesSort = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonVehiclesByClients = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
@@ -86,45 +88,6 @@
             this.vehiclesDataGridView.RowTemplate.Height = 24;
             this.vehiclesDataGridView.Size = new System.Drawing.Size(804, 169);
             this.vehiclesDataGridView.TabIndex = 10;
-            // 
-            // button_addVehicles
-            // 
-            this.button_addVehicles.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_addVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_addVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_addVehicles.Location = new System.Drawing.Point(12, 363);
-            this.button_addVehicles.Name = "button_addVehicles";
-            this.button_addVehicles.Size = new System.Drawing.Size(158, 75);
-            this.button_addVehicles.TabIndex = 11;
-            this.button_addVehicles.Text = "Додати";
-            this.button_addVehicles.UseVisualStyleBackColor = false;
-            this.button_addVehicles.Click += new System.EventHandler(this.button_addVehicles_Click);
-            // 
-            // button_editVehicles
-            // 
-            this.button_editVehicles.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_editVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_editVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_editVehicles.Location = new System.Drawing.Point(222, 363);
-            this.button_editVehicles.Name = "button_editVehicles";
-            this.button_editVehicles.Size = new System.Drawing.Size(158, 75);
-            this.button_editVehicles.TabIndex = 12;
-            this.button_editVehicles.Text = "Редагувати";
-            this.button_editVehicles.UseVisualStyleBackColor = false;
-            this.button_editVehicles.Click += new System.EventHandler(this.button_editVehicles_Click);
-            // 
-            // button_deleteVehicles
-            // 
-            this.button_deleteVehicles.BackColor = System.Drawing.Color.DarkKhaki;
-            this.button_deleteVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_deleteVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_deleteVehicles.Location = new System.Drawing.Point(429, 363);
-            this.button_deleteVehicles.Name = "button_deleteVehicles";
-            this.button_deleteVehicles.Size = new System.Drawing.Size(158, 75);
-            this.button_deleteVehicles.TabIndex = 13;
-            this.button_deleteVehicles.Text = "Видалити";
-            this.button_deleteVehicles.UseVisualStyleBackColor = false;
-            this.button_deleteVehicles.Click += new System.EventHandler(this.button_deleteVehicles_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -184,6 +147,45 @@
             // 
             this.kursova_carParkingDataSet.DataSetName = "kursova_carParkingDataSet";
             this.kursova_carParkingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // button_addVehicles
+            // 
+            this.button_addVehicles.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_addVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_addVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_addVehicles.Location = new System.Drawing.Point(12, 363);
+            this.button_addVehicles.Name = "button_addVehicles";
+            this.button_addVehicles.Size = new System.Drawing.Size(158, 75);
+            this.button_addVehicles.TabIndex = 11;
+            this.button_addVehicles.Text = "Додати";
+            this.button_addVehicles.UseVisualStyleBackColor = false;
+            this.button_addVehicles.Click += new System.EventHandler(this.button_addVehicles_Click);
+            // 
+            // button_editVehicles
+            // 
+            this.button_editVehicles.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_editVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_editVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_editVehicles.Location = new System.Drawing.Point(222, 363);
+            this.button_editVehicles.Name = "button_editVehicles";
+            this.button_editVehicles.Size = new System.Drawing.Size(158, 75);
+            this.button_editVehicles.TabIndex = 12;
+            this.button_editVehicles.Text = "Редагувати";
+            this.button_editVehicles.UseVisualStyleBackColor = false;
+            this.button_editVehicles.Click += new System.EventHandler(this.button_editVehicles_Click);
+            // 
+            // button_deleteVehicles
+            // 
+            this.button_deleteVehicles.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button_deleteVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_deleteVehicles.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_deleteVehicles.Location = new System.Drawing.Point(429, 363);
+            this.button_deleteVehicles.Name = "button_deleteVehicles";
+            this.button_deleteVehicles.Size = new System.Drawing.Size(158, 75);
+            this.button_deleteVehicles.TabIndex = 13;
+            this.button_deleteVehicles.Text = "Видалити";
+            this.button_deleteVehicles.UseVisualStyleBackColor = false;
+            this.button_deleteVehicles.Click += new System.EventHandler(this.button_deleteVehicles_Click);
             // 
             // vehiclesTableAdapter
             // 
@@ -290,12 +292,38 @@
             this.label3.Text = "Сортування";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(12, 468);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(616, 38);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Звіт \"Транспортні засоби по клієнтам\"";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonVehiclesByClients
+            // 
+            this.buttonVehiclesByClients.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonVehiclesByClients.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonVehiclesByClients.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonVehiclesByClients.Location = new System.Drawing.Point(658, 455);
+            this.buttonVehiclesByClients.Name = "buttonVehiclesByClients";
+            this.buttonVehiclesByClients.Size = new System.Drawing.Size(158, 75);
+            this.buttonVehiclesByClients.TabIndex = 23;
+            this.buttonVehiclesByClients.Text = "Друк звіту";
+            this.buttonVehiclesByClients.UseVisualStyleBackColor = false;
+            this.buttonVehiclesByClients.Click += new System.EventHandler(this.buttonVehiclesByClients_Click);
+            // 
             // VehiclesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(829, 450);
+            this.ClientSize = new System.Drawing.Size(829, 540);
+            this.Controls.Add(this.buttonVehiclesByClients);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox_vehiclesSort);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox_vehiclesType3);
@@ -345,5 +373,7 @@
         private System.Windows.Forms.CheckBox checkBox_vehiclesType3;
         private System.Windows.Forms.ComboBox comboBox_vehiclesSort;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonVehiclesByClients;
     }
 }

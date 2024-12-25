@@ -60,6 +60,8 @@
             this.tableAdapterManager = new kursova_carParking_at2.kursova_carParkingDataSetTableAdapters.TableAdapterManager();
             this.checkBox_searchByFirstName = new System.Windows.Forms.CheckBox();
             this.checkBox_searchByLastName = new System.Windows.Forms.CheckBox();
+            this.buttonClientsWithoutActiveParking = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_clients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursova_carParkingDataSet)).BeginInit();
@@ -371,12 +373,38 @@
             this.checkBox_searchByLastName.Text = "Прізвище";
             this.checkBox_searchByLastName.UseVisualStyleBackColor = true;
             // 
+            // buttonClientsWithoutActiveParking
+            // 
+            this.buttonClientsWithoutActiveParking.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonClientsWithoutActiveParking.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonClientsWithoutActiveParking.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonClientsWithoutActiveParking.Location = new System.Drawing.Point(426, 585);
+            this.buttonClientsWithoutActiveParking.Name = "buttonClientsWithoutActiveParking";
+            this.buttonClientsWithoutActiveParking.Size = new System.Drawing.Size(158, 75);
+            this.buttonClientsWithoutActiveParking.TabIndex = 18;
+            this.buttonClientsWithoutActiveParking.Text = "Друк звіту";
+            this.buttonClientsWithoutActiveParking.UseVisualStyleBackColor = false;
+            this.buttonClientsWithoutActiveParking.Click += new System.EventHandler(this.buttonClientsWithoutActiveParking_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Georgia", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(12, 585);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(357, 76);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Звіт по активним \r\nпаркуванням клієнтів";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(896, 581);
+            this.ClientSize = new System.Drawing.Size(896, 670);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.buttonClientsWithoutActiveParking);
             this.Controls.Add(this.checkBox_searchByLastName);
             this.Controls.Add(this.checkBox_searchByFirstName);
             this.Controls.Add(this.vehiclesDataGridView);
@@ -437,5 +465,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.CheckBox checkBox_searchByFirstName;
         private System.Windows.Forms.CheckBox checkBox_searchByLastName;
+        private System.Windows.Forms.Button buttonClientsWithoutActiveParking;
+        private System.Windows.Forms.Label label5;
     }
 }

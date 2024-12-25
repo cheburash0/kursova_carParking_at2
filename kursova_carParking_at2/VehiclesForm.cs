@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace kursova_carParking_at2
 {
@@ -189,7 +191,7 @@ namespace kursova_carParking_at2
                 }
             }
 
-            
+
         }
 
         private void checkBox_vehiclesType1_CheckedChanged(object sender, EventArgs e)
@@ -319,6 +321,88 @@ namespace kursova_carParking_at2
 
                 }
             };
+        }
+
+        private void buttonVehiclesByClients_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString = "Server=DESKTOP-G5PU7L6;Database=kursova_carParking;Integrated Security=True;";
+                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    sqlConnection.Open();
+
+                    string query = @"
+        SELECT 
+            Clients.client_id AS [ID Клієнта],
+            Clients.first_name AS [Ім'я],
+            Clients.last_name AS [Прізвище],
+            Vehicles.licence_plate AS [Номерний знак],
+            Vehicles.model AS [Модель],
+            Vehicles.vehicle_type AS [Тип транспорту]
+        FROM Clients
+        JOIN Vehicles ON Clients.client_id = Vehicles.client_id
+        ORDER BY Clients.last_name, Clients.first_name;";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, sqlConnection);
+                    DataTable reportTable = new DataTable();
+                    adapter.Fill(reportTable);
+
+                    // Формування тексту для друку
+                    StringBuilder printContent = new StringBuilder();
+                    printContent.AppendLine("Автостоянка \"Shmel's Parking\"");
+                    printContent.AppendLine("Звіт: Транспортні засоби по клієнтам");
+                    printContent.AppendLine($"Дата створення звіту: {DateTime.Now:dd.MM.yyyy HH:mm}");
+
+                    // Обчислення ширини колонок
+                    List<int> columnWidths = new List<int>();
+                    foreach (DataColumn column in reportTable.Columns)
+                    {
+                        columnWidths.Add(column.ColumnName.Length > 20 ? column.ColumnName.Length + 2 : 20); // Мінімальна ширина 20
+                    }
+
+                    int totalWidth = columnWidths.Sum(); // Загальна ширина для розділової лінії
+                    printContent.AppendLine(new string('-', totalWidth));
+
+                    // Додавання заголовків колонок
+                    for (int i = 0; i < reportTable.Columns.Count; i++)
+                    {
+                        printContent.Append($"{reportTable.Columns[i].ColumnName.PadRight(columnWidths[i])}");
+                    }
+                    printContent.AppendLine();
+                    printContent.AppendLine(new string('-', totalWidth));
+
+                    // Додавання рядків даних
+                    foreach (DataRow row in reportTable.Rows)
+                    {
+                        for (int i = 0; i < row.ItemArray.Length; i++)
+                        {
+                            string cellValue = row[i]?.ToString() ?? "";
+                            printContent.Append($"{cellValue.PadRight(columnWidths[i])}");
+                        }
+                        printContent.AppendLine();
+                    }
+
+                    // Вибір місця для збереження
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "Text Files (*.txt)|*.txt",
+                        FileName = $"Транспортні засоби по клієнтам_{DateTime.Now:yyyyMMdd_HHmmss}.txt",
+                        Title = "Збереження звіту"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(saveFileDialog.FileName, printContent.ToString());
+                        MessageBox.Show($"Звіт успішно збережено: {saveFileDialog.FileName}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка під час створення звіту: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

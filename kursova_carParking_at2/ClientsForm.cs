@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace kursova_carParking_at2
 {
@@ -355,6 +357,93 @@ namespace kursova_carParking_at2
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonClientsWithoutActiveParking_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString = "Server=DESKTOP-G5PU7L6;Database=kursova_carParking;Integrated Security=True;";
+                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    sqlConnection.Open();
+
+                    string query = @"
+                SELECT 
+                    Clients.client_id AS [ID Клієнта],
+                    Clients.first_name AS [Ім'я],
+                    Clients.last_name AS [Прізвище],
+                    CASE
+                        WHEN EXISTS (
+                            SELECT 1
+                            FROM Vehicles 
+                            JOIN Parking ON Vehicles.vehicle_id = Parking.vehicle_id
+                            WHERE Vehicles.client_id = Clients.client_id
+                              AND (Parking.end_date IS NULL OR Parking.end_date >= CAST(GETDATE() AS DATE))
+                        )
+                        THEN 'Так'
+                        ELSE 'Ні'
+                    END AS [Активне паркування]
+                FROM Clients
+                ORDER BY [Активне паркування] DESC, Clients.last_name, Clients.first_name;";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, sqlConnection);
+                    DataTable reportTable = new DataTable();
+                    adapter.Fill(reportTable);
+
+                    StringBuilder printContent = new StringBuilder();
+                    printContent.AppendLine("Автостоянка \"Shmel's Parking\"");
+                    printContent.AppendLine("Звіт: Клієнти та статус їх парковок");
+                    printContent.AppendLine($"Дата створення звіту: {DateTime.Now:dd.MM.yyyy HH:mm}");
+
+                    // Формуємо розділову лінію з урахуванням ширини всіх стовпців
+                    List<int> columnWidths = new List<int>();
+                    foreach (DataColumn column in reportTable.Columns)
+                    {
+                        columnWidths.Add(column.ColumnName.Length > 15 ? column.ColumnName.Length + 2 : 15); // Мінімальна ширина 15
+                    }
+
+                    int totalWidth = columnWidths.Sum(); // Загальна ширина
+                    printContent.AppendLine(new string('-', totalWidth));
+
+                    // Формування заголовків
+                    for (int i = 0; i < reportTable.Columns.Count; i++)
+                    {
+                        printContent.Append($"{reportTable.Columns[i].ColumnName.PadRight(columnWidths[i])}");
+                    }
+                    printContent.AppendLine();
+                    printContent.AppendLine(new string('-', totalWidth));
+
+                    // Додавання даних
+                    foreach (DataRow row in reportTable.Rows)
+                    {
+                        for (int i = 0; i < reportTable.Columns.Count; i++)
+                        {
+                            string cellValue = row[i]?.ToString() ?? "";
+                            printContent.Append($"{cellValue.PadRight(columnWidths[i])}");
+                        }
+                        printContent.AppendLine();
+                    }
+
+                    // Вибір місця збереження файлу
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "Text Files (*.txt)|*.txt",
+                        FileName = $"Звіт по активним паркуванням клієнтів_{DateTime.Now:yyyyMMdd_HHmmss}.txt",
+                        Title = "Збереження звіту"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(saveFileDialog.FileName, printContent.ToString());
+                        MessageBox.Show($"Звіт успішно збережено за адресою: {saveFileDialog.FileName}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка під час створення звіту: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

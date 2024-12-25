@@ -53,7 +53,7 @@ namespace kursova_carParking_at2
                     .FirstOrDefault(row => row.Field<int>("parking_id") == parkingId);
 
                 if (parkingRow == null)
-                    throw new Exception("Парковочная сессия не найдена!");
+                    throw new Exception("Паркувальна сесія не знайдена!");
 
                 int spaceId = parkingRow.Field<int>("space_id");
                 string startDateTimeString = $"{parkingRow.Field<DateTime>("start_date").ToString("dd.MM.yyyy")} {parkingRow.Field<TimeSpan>("start_time").ToString(@"hh\:mm\:ss")}";
@@ -68,7 +68,7 @@ namespace kursova_carParking_at2
                     .FirstOrDefault(row => row.Field<int>("space_id") == spaceId);
 
                 if (spaceRow == null)
-                    throw new Exception("Информация о месте не найдена!");
+                    throw new Exception("Інформацію про місце не знайдено!");
 
                 int tariffId = spaceRow.Field<int>("tariff_id");
                 decimal pricePerHour = spaceRow.Field<decimal>("price_per_hour");
@@ -79,7 +79,7 @@ namespace kursova_carParking_at2
                     .FirstOrDefault(row => row.Field<int>("tariff_id") == tariffId);
 
                 if (tariffRow == null)
-                    throw new Exception("Информация о тарифе не найдена!");
+                    throw new Exception("Інформація про тариф не знайдена!");
 
                 decimal dayCoefficient = tariffRow.Field<decimal>("day_coefficient");
                 decimal nightCoefficient = tariffRow.Field<decimal>("night_coefficient");
@@ -116,7 +116,7 @@ namespace kursova_carParking_at2
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при расчете суммы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка під час розрахунку суми: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -152,12 +152,12 @@ namespace kursova_carParking_at2
 
                 IsChanged = true;
                 RefreshPaymentsData?.Invoke();
-                MessageBox.Show("Оплата успешно добавлена/обновлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Оплата успішно додана/оновлена!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при сохранении оплаты: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка під час збереження оплати: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

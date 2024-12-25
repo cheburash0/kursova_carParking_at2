@@ -233,7 +233,7 @@ namespace kursova_carParking_at2
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
                     Filter = "Text Files (*.txt)|*.txt",
-                    FileName = $"{statisticsTitle.Replace(" ", "_")}_{DateTime.Now:yyyyMMdd_HHmmss}.txt",
+                    FileName = $"{statisticsTitle.Replace(" ", "_")}_{DateTime.Now:yyyy.MM.dd_HH:mm:ss}.txt",
                     Title = "Збереження статистики"
                 };
 
